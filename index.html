@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Heights 777</title>
+<meta name="description" content="Heights 777 — eighteen one- and two-bedroom residences on seven storeys at Plot 777, Parakou Street, Wuse II, Abuja FCT.">
+<meta property="og:title" content="Heights 777">
+<meta property="og:description" content="Eighteen residences, seven storeys, one quiet street in Wuse II.">
+<meta property="og:image" content="https://nabildeealee-byte.github.io/heights-777/assets/corner-dusk.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/corner-dusk.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* ————————————————————————————————————————————————
+   Heights 777 — design tokens
+   A nocturne: night ground, ivory slabs, one ribbon of warm light.
+———————————————————————————————————————————————— */
+:root{
+  --ink:#0d0f12; --ink-2:#13161c; --ink-3:#1a1e26;
+  --ivory:#f3efe7; --ivory-2:#ebe6db; --ivory-3:#ddd7ca;
+  --gold:#d2ae74; --gold-deep:#a9835a;
+  --font-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --font-body:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --gutter:clamp(20px,5vw,80px);
+  --maxw:1400px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+.page[data-tone="dark"]{--bg:var(--ink);--bg-2:var(--ink-2);--bg-3:var(--ink-3);--fg:var(--ivory);--muted:#9a9da5;--line:rgba(243,239,231,.14);--line-2:rgba(243,239,231,.34);--accent:var(--gold);--accent-soft:rgba(210,174,116,.16);--accent-0:rgba(210,174,116,0)}
+.page[data-tone="light"]{--bg:var(--ivory);--bg-2:var(--ivory-2);--bg-3:var(--ivory-3);--fg:#14161a;--muted:#686b73;--line:rgba(20,22,26,.14);--line-2:rgba(20,22,26,.4);--accent:var(--gold-deep);--accent-soft:rgba(169,131,90,.16);--accent-0:rgba(169,131,90,0)}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--ivory);font-family:var(--font-body);font-weight:300;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul,ol{margin:0;padding:0;list-style:none}
+p{margin:0}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+.wrap{width:min(var(--maxw),100% - 2*var(--gutter));margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* —— type —— */
+.eyebrow{font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.eyebrow .idx{color:var(--muted);margin-right:1.1em}
+.title{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4.3vw,66px);line-height:1.04;letter-spacing:-.008em;margin:0;text-wrap:balance;font-variation-settings:"opsz" 96}
+.title em{font-style:italic;color:var(--accent);font-weight:400}
+.lede{font-size:clamp(18px,1.45vw,21px);line-height:1.5;max-width:32em;color:var(--fg)}
+.body{font-size:15.5px;line-height:1.75;color:var(--muted);max-width:38em}
+.body strong{color:var(--fg);font-weight:400}
+.body + .body{margin-top:1em}
+.num{font-family:var(--font-display);font-variant-numeric:tabular-nums;font-variation-settings:"opsz" 96}
+
+/* —— page chrome —— */
+.prog{position:fixed;top:0;left:0;height:1px;width:100%;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:70;pointer-events:none}
+.top{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);z-index:60;color:var(--ivory);transition:color .4s}
+.top.on-light{color:#14161a}
+.top .brand{font-family:var(--font-display);font-size:22px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.28em}
+.top .brand i{font-style:italic}
+.top .brand b{font-weight:400;color:var(--gold)}
+.top .cur{display:flex;align-items:center;gap:22px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.top .cur .lab{opacity:.75}
+.top .cur .lab span{opacity:1}
+.top .idxbtn{display:inline-flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid currentColor;letter-spacing:.22em}
+.top .idxbtn::before{content:"";width:16px;height:1px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
+.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:55;color:var(--ivory);transition:color .4s}
+.dots.on-light{color:#14161a}
+.dots a{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.14em;font-weight:500;opacity:.42;transition:opacity .3s}
+.dots a::before{content:"";width:12px;height:1px;background:currentColor;transition:width .35s var(--ease),background .3s}
+.dots a.on{opacity:1;color:var(--gold)}
+.dots a.on::before{width:26px}
+.dots a:hover{opacity:1}
+@media (max-width:1180px){.dots{display:none}}
+@media (max-width:980px){.top .cur .lab{display:none}}
+
+/* —— pages —— */
+.page{position:relative;background:var(--bg);color:var(--fg);padding:clamp(88px,11vh,136px) 0 36px;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+.page>.wrap{flex:1;display:flex;flex-direction:column}
+.phead{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 72px;align-items:end;margin-bottom:clamp(40px,6vh,72px)}
+.phead .title{margin-top:20px}
+.phead .lede{justify-self:end;max-width:26em}
+@media (max-width:900px){.phead{grid-template-columns:1fr}.phead .lede{justify-self:start}}
+.pfoot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.pfoot b{color:var(--accent);font-weight:500}
+.pfoot .pn{font-family:var(--font-display);font-size:14px;letter-spacing:.06em;color:var(--fg);white-space:nowrap}
+.grow{flex:1}
+
+/* —— reveal —— */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv-line{transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv-line.in{transform:scaleX(1)}
+.hair{height:1px;background:var(--accent);width:100%}
+
+/* —— stats —— */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.stat{padding:22px 24px 22px 0;border-right:1px solid var(--line);min-width:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat .num{font-size:clamp(38px,4.2vw,62px);line-height:1;letter-spacing:-.01em;white-space:nowrap}
+.stat .num small{font-size:.42em;letter-spacing:0;margin-left:.12em;vertical-align:.9em;font-family:var(--font-body);font-weight:300;color:var(--muted)}
+.stat .lab{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:12px;font-weight:500}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* ———————————————————— 01 cover ———————————————————— */
+.cover{padding:0;min-height:auto;display:block}
+.cover-media{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:#0a0b0e}
+.cover-media img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;transform:scale(1.1);animation:kb 3.6s var(--ease) forwards,coverdrift 34s ease-in-out 3.6s infinite alternate}
+@keyframes kb{to{transform:scale(1)}}
+@keyframes coverdrift{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.6%,1.2%,0)}}
+.cover-media::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to top,rgba(13,15,18,.95) 0%,rgba(13,15,18,.62) 26%,rgba(13,15,18,.12) 52%,rgba(13,15,18,.05) 70%,rgba(13,15,18,.5) 100%)}
+.cover-body{position:absolute;inset:auto 0 0 0;padding-bottom:clamp(36px,5.5vh,64px);z-index:2;text-shadow:0 1px 24px rgba(13,15,18,.45)}
+.cover-top{position:absolute;top:96px;right:var(--gutter);z-index:2;text-align:right;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,239,231,.7);font-weight:500;line-height:1.9}
+.mark{font-family:var(--font-display);font-weight:400;font-size:clamp(70px,12.6vw,196px);line-height:.86;letter-spacing:-.025em;margin:16px 0 24px;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .16em;color:var(--ivory)}
+.mark .w{font-style:italic;font-variation-settings:"opsz" 96}
+.mark .n{color:var(--gold);font-variation-settings:"opsz" 96;background:linear-gradient(105deg,#b48b55 0%,#d2ae74 38%,#f3dfb2 50%,#d2ae74 62%,#b48b55 100%);background-size:260% 100%;background-position:120% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 8s ease-in-out 2.6s infinite}
+@keyframes shimmer{0%{background-position:120% 0}45%,100%{background-position:-140% 0}}
+.line{overflow:hidden;display:inline-block;padding:.02em .04em .08em 0}
+.js .line>span{display:inline-block;transform:translateY(112%);animation:rise 1.25s var(--ease) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{to{transform:none}}
+.cover-sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;margin-bottom:26px}
+.cover-sub p{font-size:clamp(17px,1.5vw,21px);line-height:1.45;max-width:26em;color:rgba(243,239,231,.86)}
+.cover-sub .cue{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,239,231,.6);display:flex;align-items:center;gap:14px;font-weight:500}
+.cover-sub .cue i{display:block;width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.cover .stats{border-top-color:rgba(243,239,231,.2)}
+.cover .stat{border-right-color:rgba(243,239,231,.2)}
+.cover .stat .lab{color:rgba(243,239,231,.6)}
+.credits{background:var(--ink);border-top:1px solid rgba(243,239,231,.1);padding:26px 0 28px}
+.credits .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px}
+.cred .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px}
+.cred .v{font-size:15px;color:var(--ivory);font-weight:400}
+.cred .s{font-size:13px;color:#9a9da5;margin-top:2px}
+@media (max-width:760px){.credits .wrap{grid-template-columns:1fr}.cover-top{display:none}.cover-sub{grid-template-columns:1fr}.cover-sub .cue{display:none}}
+
+/* ———————————————————— 02 glance ———————————————————— */
+.glance{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px 88px;align-items:start}
+@media (max-width:980px){.glance{grid-template-columns:1fr}}
+.glance .title{margin:20px 0 26px}
+.glance .body{margin-top:22px}
+.glance .stats{margin-top:40px}
+.glance .stat .num{font-size:clamp(30px,2.6vw,44px)}
+.also{margin-top:36px;border-top:1px solid var(--line)}
+.also li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.also li .num{font-size:22px;color:var(--accent);min-width:2.6em}
+.also li span{color:var(--muted)}
+.also li span b{color:var(--fg);font-weight:400}
+
+.stack{display:grid;grid-template-columns:minmax(120px,.42fr) minmax(0,.58fr);gap:0 34px;align-items:start}
+.stack-fig{position:sticky;top:96px}
+.stack-fig svg{width:100%;height:auto;display:block;overflow:visible}
+.stack-fig .slab{fill:var(--accent-0);stroke:var(--line-2);stroke-width:1;transition:fill .4s,stroke .4s;cursor:pointer}
+.js .stack-fig path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.5s var(--ease) var(--d,0s),fill .4s,stroke .4s,opacity .4s}
+.js .stack-fig.draw path{stroke-dashoffset:0}
+.js .stack-fig rect.ghost,.js .stack-fig text{opacity:0;transition:opacity 1s var(--ease) calc(var(--d,0s) + .6s)}
+.js .stack-fig.draw rect.ghost,.js .stack-fig.draw text{opacity:1}
+.js .stack-fig.draw text.on{opacity:1}
+.js .stack .lvl{opacity:0;transform:translateX(-12px);transition:opacity .8s var(--ease),transform .9s var(--ease),color .3s}
+.js .stack.in .lvl{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 70ms + .25s),calc(var(--i,0) * 70ms + .25s),0s}
+.stack-fig .slab.on{fill:var(--accent-soft);stroke:var(--accent)}
+.stack-fig .led{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;opacity:0;transition:opacity .4s;filter:drop-shadow(0 0 6px rgba(210,174,116,.8));pointer-events:none}
+.stack-fig .led.on{opacity:1}
+.stack-fig .ghost{stroke:var(--line-2);stroke-width:1;fill:none}
+.stack-fig .lvl-lab{font-family:var(--font-body);font-size:8.5px;letter-spacing:.14em;fill:var(--muted);font-weight:500}
+.stack-fig .lvl-lab.on{fill:var(--accent)}
+.levels{border-top:1px solid var(--line)}
+.lvl{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:14px;align-items:baseline;width:100%;text-align:left;padding:11px 0 11px 14px;border-bottom:1px solid var(--line);position:relative;transition:color .3s}
+.lvl::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .35s var(--ease)}
+.lvl.on::before{transform:scaleY(1)}
+.lvl .c{font-family:var(--font-display);font-size:19px;color:var(--muted);transition:color .3s}
+.lvl.on .c{color:var(--accent)}
+.lvl .n{font-size:14.5px;font-weight:400}
+.lvl .t{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap}
+.stack-info{margin-top:20px;min-height:170px}
+.stack-info h4{font-family:var(--font-display);font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.15}
+.stack-info h4 small{display:block;font-family:var(--font-body);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-top:6px}
+.stack-info p{font-size:14.5px;line-height:1.65;color:var(--muted)}
+.stack-info .rooms{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:12.5px;color:var(--fg)}
+.stack-info .rooms span{white-space:nowrap}
+.stack-info .rooms span b{font-family:var(--font-display);font-weight:400;font-size:15px;color:var(--accent);margin-left:.25em}
+.stack-info.swap{animation:fadeIn .5s var(--ease)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}}
+
+/* ———————————————————— 03 elevation ———————————————————— */
+.elev{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px 80px;align-items:start}
+@media (max-width:900px){.elev{grid-template-columns:1fr}}
+.cmp{position:relative;aspect-ratio:5/7;overflow:hidden;border-radius:3px;background:#000;user-select:none;--pos:50%;max-height:min(86vh,980px);width:100%}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.cmp .cmp-b{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos))}
+.cmp .bar{position:absolute;top:0;bottom:0;left:var(--pos);width:1px;background:rgba(243,239,231,.95);box-shadow:0 0 22px rgba(210,174,116,.55);pointer-events:none}
+.cmp .knob{position:absolute;top:50%;left:var(--pos);width:52px;height:52px;border-radius:50%;border:1px solid rgba(243,239,231,.7);background:rgba(13,15,18,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none}
+.cmp .knob svg{width:22px;height:22px;stroke:#f3efe7;fill:none;stroke-width:1.2;stroke-linecap:round}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:3;-webkit-appearance:none;appearance:none}
+.cmp .tag{position:absolute;bottom:20px;z-index:2;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:9px 13px;border:1px solid rgba(243,239,231,.35);background:rgba(13,15,18,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#f3efe7;pointer-events:none}
+.cmp .tag.a{left:20px}
+.cmp .tag.b{right:20px;color:var(--gold);border-color:rgba(210,174,116,.6)}
+.cmp .hint{position:absolute;top:20px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,239,231,.7);pointer-events:none;transition:opacity .5s}
+.cmp.touched .hint{opacity:0}
+.cmp:not(.touched) .knob{animation:knob 2.6s ease-in-out infinite}
+@keyframes knob{0%,100%{box-shadow:0 0 0 0 rgba(210,174,116,.0)}50%{box-shadow:0 0 0 12px rgba(210,174,116,.18)}}
+.notes{display:grid;gap:0;border-top:1px solid var(--line)}
+.note{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:26px 0;border-bottom:1px solid var(--line)}
+.note .num{font-size:30px;color:var(--accent);line-height:1}
+.note h4{font-family:var(--font-display);font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.15}
+.note p{font-size:14.5px;line-height:1.7;color:var(--muted)}
+.elev-copy .body{margin-bottom:34px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(56px,8vh,96px)}
+@media (max-width:760px){.trio{grid-template-columns:1fr 1fr}.trio figure:first-child{grid-column:1/-1}}
+.fig{margin:0;position:relative;cursor:zoom-in}
+.fig .img{overflow:hidden;border-radius:3px;background:var(--bg-2)}
+.fig .img img{width:100%;height:100%;object-fit:cover;aspect-ratio:var(--ar,5/7);transition:filter .8s var(--ease)}
+.fig .img{transition:transform .9s var(--ease)}
+.fig:hover .img{transform:translateY(-4px)}
+.fig:hover .img img{filter:brightness(1.07) saturate(1.04)}
+.fig figcaption i{transition:color .4s}
+.fig:hover figcaption i{color:var(--fg)}
+.fig figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-size:12.5px;color:var(--muted);align-items:baseline}
+.fig figcaption b{font-family:var(--font-display);font-weight:400;font-size:16px;color:var(--fg)}
+.fig figcaption i{font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--accent);white-space:nowrap}
+
+/* ———————————————————— 04 residences ———————————————————— */
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:14px 0;white-space:nowrap;flex:0 0 auto;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--muted);position:relative}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tab[aria-selected="true"]{color:var(--fg)}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.plan-panel{background:var(--bg-2);border:1px solid var(--line);padding:clamp(16px,2.5vw,36px);border-radius:3px}
+.plan{position:relative;aspect-ratio:2000/1022}
+.plan img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .6s var(--ease),transform 1.8s var(--ease)}
+.plan img[hidden]{display:block!important;opacity:0;pointer-events:none}
+.zone{position:absolute;top:2%;bottom:2%;border-radius:18px;background:var(--accent-soft);border:1px solid var(--accent);opacity:0;transition:opacity .35s;pointer-events:none}
+.zone.on{opacity:1}
+.zone[data-w="west"]{left:0;width:33.5%}
+.zone[data-w="centre"]{left:35%;width:34%}
+.zone[data-w="east"]{left:70.5%;width:29.5%}
+.zone i{position:absolute;left:12px;top:10px;font-style:normal;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.plan-foot{display:flex;justify-content:space-between;gap:20px;margin-top:16px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.plan-foot b{font-family:var(--font-display);font-weight:400;font-size:15px;color:var(--fg)}
+.plan-foot .keys{display:flex;gap:18px}
+.key{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+.key::before{content:"";width:14px;height:8px;border-radius:3px;border:1px solid var(--accent);background:var(--accent-soft)}
+.key.on{color:var(--fg)}
+.rcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px;margin-top:clamp(40px,6vh,64px)}
+@media (max-width:900px){.rcards{grid-template-columns:1fr;gap:28px}}
+.rcard{border-top:1px solid var(--line-2);padding-top:18px;cursor:default}
+.rcard[hidden]{display:none}
+.rcard .rh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.rcard h3{font-family:var(--font-display);font-weight:400;font-size:28px;margin:0;line-height:1.1}
+.rcard .rt{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500;white-space:nowrap}
+.rcard .rsum{font-size:14px;color:var(--muted);line-height:1.6;min-height:3.2em}
+.sched{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.sched td{padding:8px 0;border-top:1px solid var(--line);vertical-align:baseline}
+.sched td:first-child{color:var(--fg)}
+.sched td small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.sched td:last-child{text-align:right;font-family:var(--font-display);font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sched td:last-child i{font-style:normal;font-family:var(--font-body);font-size:11px;color:var(--muted);margin-left:2px}
+.sched tr.tot td{border-top:1px solid var(--line-2);padding-top:12px;color:var(--fg)}
+.sched tr.tot td:last-child{color:var(--accent);font-size:22px}
+.foot-note{margin-top:28px;font-size:12px;color:var(--muted);max-width:60em;line-height:1.6}
+
+/* ———————————————————— 05 visualisations ———————————————————— */
+.rail-wrap{position:relative}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--rail-pad);padding:4px var(--rail-pad) 18px;scrollbar-width:none;cursor:grab;--rail-pad:max(var(--gutter),calc((100% - var(--maxw)) / 2))}
+.rail.drag{cursor:grabbing;scroll-snap-type:none}
+.rail::-webkit-scrollbar{display:none}
+.rail .fig{flex:0 0 auto;width:min(74vw,440px);scroll-snap-align:start}
+.rail .fig .img img{aspect-ratio:5/7}
+.rail-ctl{display:flex;justify-content:space-between;align-items:center;margin:8px 0 0}
+.rail-ctl .cnt{font-family:var(--font-display);font-size:18px;color:var(--muted)}
+.rail-ctl .cnt b{font-weight:400;color:var(--fg)}
+.arrows{display:flex;gap:10px}
+.arrows button{width:46px;height:46px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;transition:border-color .3s,background .3s}
+.arrows button:hover{border-color:var(--accent);background:var(--accent-soft)}
+.arrows svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.2;stroke-linecap:round}
+.section-panel{margin-top:clamp(56px,8vh,96px);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.9fr);gap:36px 64px;align-items:end}
+@media (max-width:900px){.section-panel{grid-template-columns:1fr}}
+.section-panel .draw{background:var(--bg-2);border:1px solid var(--line);padding:clamp(14px,2vw,28px);border-radius:3px}
+.section-panel .draw img{width:100%;height:auto}
+.facts{border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+.facts .num{font-size:28px;color:var(--accent);min-width:3.4em}
+.facts .num small{font-family:var(--font-body);font-size:11px;color:var(--muted);margin-left:2px;letter-spacing:.06em}
+.facts span{font-size:14px;color:var(--muted)}
+.facts span b{color:var(--fg);font-weight:400}
+
+/* ———————————————————— 06 location & specification ———————————————————— */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px 96px;align-items:start}
+@media (max-width:980px){.two{grid-template-columns:1fr}}
+.two .title{margin:18px 0 22px;font-size:clamp(30px,3.2vw,48px)}
+.site{margin-top:32px;background:var(--bg-2);border:1px solid var(--line);border-radius:3px;padding:clamp(16px,2vw,28px)}
+.site svg{width:100%;height:auto;display:block;font-family:var(--font-body)}
+.site .lot{fill:none;stroke:var(--line-2);stroke-width:1}
+.site .bld{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1}
+.site .gh{fill:none;stroke:var(--fg);stroke-width:1}
+.site .bay{fill:none;stroke:var(--line-2);stroke-width:.7;stroke-dasharray:3 3}
+.site .road{fill:var(--bg-3)}
+.site .tree{fill:rgba(111,134,96,.32);stroke:var(--line-2);stroke-width:.8}
+.site text{font-size:9px;letter-spacing:.16em;fill:var(--muted);font-weight:500}
+.site text.big{font-family:var(--font-display);font-size:16px;letter-spacing:0;fill:var(--fg);font-weight:400}
+.site text.acc{fill:var(--accent)}
+.site .n{stroke:var(--fg);fill:none;stroke-width:1}
+.drive{margin-top:30px;border-top:1px solid var(--line)}
+.drive li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line)}
+.drive .num{font-size:28px;min-width:3em;color:var(--fg)}
+.drive .num small{font-family:var(--font-body);font-size:11px;color:var(--muted);letter-spacing:.06em;margin-left:3px}
+.drive span{font-size:14px;color:var(--muted)}
+.drive span b{color:var(--fg);font-weight:400}
+.reach{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:14px;color:var(--muted)}
+.reach li{padding:6px 0;border-bottom:1px solid var(--line)}
+.spec{margin-top:32px}
+.spec-group{border-top:1px solid var(--line-2);padding:18px 0 14px}
+.spec-group h4{margin:0 0 10px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.spec-group dl{margin:0}
+.spec-row{display:grid;grid-template-columns:minmax(120px,.38fr) minmax(0,.62fr);gap:18px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.spec-row dt{color:var(--fg);font-weight:400}
+.spec-row dd{margin:0;color:var(--muted);line-height:1.6}
+
+/* ———————————————————— 07 closing ———————————————————— */
+.close{padding-top:0}
+.close .bg{position:absolute;inset:0;overflow:hidden}
+.close .bg .pxw{position:absolute;inset:0}
+.close .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.42;filter:saturate(.7)}
+.close .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,15,18,.4),rgba(13,15,18,.85) 55%,var(--ink) 100%)}
+.close .wrap{position:relative;z-index:1;padding-top:clamp(140px,22vh,260px)}
+.close .big{font-family:var(--font-display);font-weight:400;font-size:clamp(52px,8.5vw,140px);line-height:.95;letter-spacing:-.02em;margin:18px 0 22px;text-wrap:balance}
+.close .big em{font-style:italic;color:var(--gold)}
+.close .lede{max-width:30em;color:rgba(243,239,231,.85)}
+.close-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:40px 56px;margin-top:clamp(56px,9vh,110px);padding-top:28px;border-top:1px solid var(--line)}
+@media (max-width:900px){.close-grid{grid-template-columns:1fr}}
+.close-grid h4{margin:0 0 14px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.toc li a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;align-items:baseline;transition:color .3s}
+.toc li a .num{font-size:17px;color:var(--muted)}
+.toc li a:hover{color:var(--gold)}
+.who{font-size:14.5px;line-height:1.7;color:var(--muted)}
+.who b{display:block;color:var(--ivory);font-weight:400}
+.who + .who{margin-top:16px}
+.contact a{display:block;font-size:15px;color:var(--ivory);padding:7px 0;border-bottom:1px solid var(--line);transition:color .3s}
+.contact a:hover{color:var(--gold)}
+.disc{margin-top:48px;font-size:11.5px;line-height:1.65;color:#7f838b;max-width:70em}
+.close .pfoot{margin-top:28px;position:relative;z-index:1}
+
+/* ———————————————————— index overlay ———————————————————— */
+.menu{position:fixed;inset:0;z-index:80;background:rgba(13,15,18,.97);color:var(--ivory);display:grid;grid-template-rows:64px 1fr;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.menu.open{opacity:1;pointer-events:auto}
+.menu .mhead{display:flex;justify-content:space-between;align-items:center;padding:0 var(--gutter)}
+.menu .mhead .brand{font-family:var(--font-display);font-size:22px}
+.menu .mhead .brand b{font-weight:400;color:var(--gold)}
+.menu .mclose{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:10px 0;border-bottom:1px solid currentColor}
+.menu ol{align-self:center;width:min(var(--maxw),100% - 2*var(--gutter));margin-inline:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 48px}
+.menu li a{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid rgba(243,239,231,.14);transition:color .3s,transform .6s var(--ease),opacity .6s var(--ease);opacity:0;transform:translateY(16px)}
+.menu.open li a{opacity:1;transform:none;transition-delay:calc(var(--i) * 50ms + 120ms)}
+.menu li a:hover{color:var(--gold)}
+.menu li a .num{font-size:34px;color:var(--gold)}
+.menu li a .t{font-family:var(--font-display);font-size:26px}
+.menu li a .s{display:block;font-family:var(--font-body);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9a9da5;margin-top:4px;font-weight:500}
+
+/* ———————————————————— lightbox ———————————————————— */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(10,11,14,.96);display:grid;grid-template-rows:64px 1fr 72px;opacity:0;pointer-events:none;transition:opacity .4s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb .lbh{display:flex;justify-content:space-between;align-items:center;padding:0 var(--gutter);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--ivory)}
+.lb .lbh .cnt{font-family:var(--font-display);font-size:16px;letter-spacing:.06em}
+.lb .lbclose{padding:10px 0;border-bottom:1px solid currentColor;letter-spacing:.22em}
+.lb figure{margin:0;display:grid;place-items:center;padding:0 var(--gutter);min-height:0}
+.lb figure img{max-height:100%;max-width:100%;height:calc(100vh - 136px);width:auto;object-fit:contain;border-radius:2px;transform:scale(.96);filter:blur(10px);opacity:0;transition:transform .8s var(--ease),filter .8s var(--ease),opacity .5s}
+.lb.open figure img{transform:none;filter:blur(0);opacity:1}
+.lb .lbf{display:flex;justify-content:space-between;align-items:center;padding:0 var(--gutter);color:var(--ivory)}
+.lb .lbf figcaption{font-size:14px;color:#c9cbd0}
+.lb .lbf figcaption b{font-family:var(--font-display);font-weight:400;font-size:17px;color:var(--ivory);margin-right:10px}
+.lb .arrows button{color:var(--ivory)}
+.lb .arrows button:hover{border-color:var(--gold);background:rgba(210,174,116,.16)}
+
+/* —— motion: image reveals, drift, parallax —— */
+.pxw{display:block;width:100%;height:100%;will-change:transform}
+.wipe{position:relative}
+.js .wipe::after{content:"";position:absolute;inset:-1px;background:var(--bg);z-index:6;pointer-events:none;transform-origin:top;transition:transform 1.5s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .plan.wipe::after{background:var(--bg-2)}
+.js .wipe.wipe-x::after{transform-origin:right}
+.js .wipe.in::after{transform:scaleY(0)}
+.js .wipe.wipe-x.in::after{transform:scaleX(0)}
+.js .wipe img{transform:scale(1.16);transition:transform 2s var(--ease),filter .8s var(--ease),opacity .6s var(--ease)}
+.js .wipe.soft img{transform:scale(1.05)}
+.js .wipe.in img{transform:scale(1)}
+.js .plan.wipe img{transition:opacity .6s var(--ease),transform 1.8s var(--ease)}
+.js .fig .img img{animation:breathe 18s ease-in-out 2.2s infinite alternate paused}
+.js .fig .img.in img,.js .rail-wrap.in .fig .img img{animation-play-state:running}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.07)}}
+.js .rail-wrap .fig{opacity:0;transform:translateX(72px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.js .rail-wrap.in .fig{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 110ms + .15s)}
+.js .site svg>*{opacity:0;transition:opacity .9s var(--ease) var(--d,0s),transform 1.2s var(--ease) var(--d,0s)}
+.js .site svg>.bld{transform:scale(.94);transform-box:fill-box;transform-origin:center}
+.js .site.in svg>*{opacity:1;transform:none}
+.site svg>*:nth-child(1){--d:.05s}.site svg>*:nth-child(2){--d:.2s}.site svg>*:nth-child(3){--d:.9s}.site svg>*:nth-child(4){--d:.45s}.site svg>*:nth-child(5){--d:.7s}.site svg>*:nth-child(6){--d:.8s}.site svg>*:nth-child(7){--d:.55s}.site svg>*:nth-child(8){--d:.65s}.site svg>*:nth-child(9){--d:1s}.site svg>*:nth-child(10){--d:1s}.site svg>*:nth-child(11){--d:1.05s}.site svg>*:nth-child(12){--d:1.1s}.site svg>*:nth-child(13){--d:1.25s}.site svg>*:nth-child(14){--d:.3s}.site svg>*:nth-child(15){--d:1.15s}.site svg>*:nth-child(16){--d:1.3s}
+@supports (animation-timeline: view()){
+  .fig .img .pxw{animation:drift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  .close .bg .pxw{animation:bgdrift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+}
+@keyframes drift{from{transform:translate3d(0,-7%,0) scale(1.16)}to{transform:translate3d(0,7%,0) scale(1.16)}}
+@keyframes bgdrift{from{transform:translate3d(0,-9%,0) scale(1.2)}to{transform:translate3d(0,9%,0) scale(1.2)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .js .rv,.js .rv-line{opacity:1;transform:none}
+  .js .line>span{transform:none}
+  .cover-media img{transform:none}
+  .js .wipe::after{display:none}
+  .js .wipe img{transform:none}
+  .js .rail-wrap .fig{opacity:1;transform:none}
+  .js .site svg>*{opacity:1;transform:none}
+  .js .stack .lvl{opacity:1;transform:none}
+  .js .stack-fig path{stroke-dashoffset:0}
+  .js .stack-fig rect.ghost,.js .stack-fig text{opacity:1}
+  .fig .img img{animation:none}
+  .mark .n{animation:none}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .stack{grid-template-columns:88px minmax(0,1fr);gap:0 18px}
+  .lvl{grid-template-columns:32px minmax(0,1fr)}
+  .lvl .t{display:none}
+  .lvl .c{font-size:17px}
+  .mark{font-size:clamp(60px,20vw,110px)}
+  .stat .num{font-size:34px}
+  .rcard h3{font-size:24px}
+  .top{height:56px}
+}
+
+/* ———————————————————— loader veil, grain, ticker ———————————————————— */
+.veil{position:fixed;inset:0;z-index:100;background:var(--ink);color:var(--ivory);display:none;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:transform 1s cubic-bezier(.7,0,.2,1);will-change:transform}
+.js .veil{display:flex}
+.veil.off{transform:translate3d(0,-100%,0)}
+.veil svg{width:150px;height:auto;overflow:visible}
+.veil .sl{fill:none;stroke:rgba(243,239,231,.75);stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s var(--ease) forwards;animation-delay:calc(var(--d)*1s)}
+.veil .sl.g{stroke:var(--gold);stroke-width:1.7;filter:drop-shadow(0 0 5px rgba(210,174,116,.85))}
+@keyframes draw{to{stroke-dashoffset:0}}
+.veil .vn{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#9a9da5;font-weight:500}
+.veil .vc{position:absolute;right:var(--gutter);bottom:26px;font-family:var(--font-display);font-size:58px;line-height:1;font-variant-numeric:tabular-nums}
+.veil .vc small{font-family:var(--font-body);font-size:12px;letter-spacing:.2em;margin-left:6px;vertical-align:middle;color:#9a9da5}
+@media (prefers-reduced-motion:reduce){.veil{display:none!important}}
+.js .cover-media img{animation-play-state:paused}
+.js .cover.in .cover-media img{animation-play-state:running}
+.js .cover .line>span{animation-play-state:paused}
+.js .cover.in .line>span{animation-play-state:running}
+.grain{position:fixed;inset:-40%;z-index:98;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-2%,6%)}80%{transform:translate(5%,-2%)}100%{transform:translate(0,0)}}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}}
+.strip{border-top:1px solid rgba(243,239,231,.1);background:var(--ink);overflow:hidden;white-space:nowrap;padding:15px 0;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ivory);font-weight:500}
+.strip .tk{display:inline-block;animation:tk 70s linear infinite}
+.strip .tk span{display:inline-block;padding:0 32px;position:relative}
+.strip .tk span::after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;transform:translateY(-50%) rotate(45deg);background:var(--gold)}
+@keyframes tk{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.strip .tk{animation:none}}
+
+/* ———————————————————— plan viewer ———————————————————— */
+.plan-wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(28px,4vw,60px);align-items:start}
+@media (max-width:1000px){.plan-wrap{grid-template-columns:1fr}}
+.plan{aspect-ratio:2400/1236}
+.plan .labs{position:absolute;inset:0}
+.plan .mk{position:absolute;transform:translate(-50%,-50%);width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;line-height:1;color:var(--ivory);cursor:default;opacity:0;transition:opacity .4s var(--ease),transform .25s var(--ease);transition-delay:calc(var(--i,0)*.025s);z-index:2}
+.plan .mk::before{content:"";position:absolute;inset:1px;transform:rotate(45deg);background:var(--accent);box-shadow:0 0 0 1.5px var(--bg-2)}
+.plan .mk span{position:relative}
+.plan .mk.on{opacity:1}
+.plan .mk.dim{opacity:.22}
+.plan .mk.hi,.plan .mk:hover{transform:translate(-50%,-50%) scale(1.5);z-index:4;opacity:1}
+.plan .mk.hi::before,.plan .mk:hover::before{background:var(--fg)}
+.plan .mk .tip{position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%) scale(.67);transform-origin:50% 100%;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);background:var(--bg);border:1px solid var(--line-2);padding:5px 8px;border-radius:2px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;line-height:1.3;font-weight:500}
+.plan .mk .tip small{display:block;font-family:var(--font-display);font-size:1.25em;letter-spacing:.02em;text-transform:none;color:var(--accent);font-weight:400}
+.plan .mk.hi .tip,.plan .mk:hover .tip{opacity:1}
+.plan.plain .mk{opacity:0;pointer-events:none}
+.plan .north{position:absolute;right:8px;top:8px;width:34px;height:34px;color:var(--muted);z-index:3}
+.plan .north svg{width:100%;height:100%}
+.plan .north path,.plan .north circle{fill:none;stroke:currentColor;stroke-width:1}
+.plan .north text{font-family:var(--font-body);font-size:9px;fill:currentColor}
+.plan-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:3px}
+.seg button{padding:8px 14px;border-radius:999px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:background .3s,color .3s}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.tbtn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid var(--line-2);border-radius:999px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:border-color .3s,background .3s,color .3s;color:var(--fg)}
+.tbtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round}
+.tbtn i{width:7px;height:7px;background:var(--accent);transform:rotate(45deg);display:inline-block;transition:background .3s}
+.tbtn:hover,.tbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.legend{display:grid;grid-template-columns:1fr;gap:0 22px}
+.legend .lg{margin-bottom:16px}
+.legend h4{font-weight:500;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.legend ul{margin:0;padding:0;list-style:none}
+.legend li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);cursor:default;transition:color .2s}
+.legend li:last-child{border-bottom:1px solid var(--line)}
+.legend li .ln{font-size:8.5px;font-weight:500;color:var(--ivory);width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;position:relative}
+.legend li .ln::before{content:"";position:absolute;inset:1px;transform:rotate(45deg);background:var(--accent);z-index:-1}
+.legend li.hi,.legend li:hover{color:var(--fg)}
+.legend li.hi .ln::before,.legend li:hover .ln::before{background:var(--fg)}
+@media (min-width:1000px){.legend{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.legend{grid-template-columns:1fr}}
+.rlist{margin-top:14px}
+.rlist li{position:relative;padding:8px 0 8px 22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.55}
+.rlist li:last-child{border-bottom:1px solid var(--line)}
+.rlist li::before{content:"";position:absolute;left:3px;top:15px;width:6px;height:6px;background:var(--accent);transform:rotate(45deg)}
+.rlist li b{color:var(--fg);font-weight:400}
+
+/* ———————————————————— lightbox zoom board ———————————————————— */
+.lb .lbh{gap:20px}
+.zoomctl{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.12em;margin-left:auto}
+.zoomctl[hidden]{display:none}
+.zoomctl button{width:34px;height:34px;border:1px solid rgba(243,239,231,.3);border-radius:50%;color:var(--ivory);font-size:16px;display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s}
+.zoomctl button#zreset{width:auto;padding:0 12px;border-radius:999px;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.zoomctl button:hover{border-color:var(--gold);background:rgba(210,174,116,.14)}
+.zoomctl span{min-width:44px;text-align:center;color:#9a9da5}
+.lb .stage{position:absolute;left:0;right:0;top:64px;bottom:72px;overflow:hidden;cursor:grab;touch-action:none;background:var(--ivory);z-index:2}
+.lb .stage.drag{cursor:grabbing}
+.lb .stage img{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;max-width:none;max-height:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.lb figure[hidden]{display:none}
+@media (max-width:600px){.zoomctl span{display:none}}
+
+/* ———————————————————— site plan ———————————————————— */
+.sitegrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,5vw,80px);align-items:start}
+@media (max-width:1000px){.sitegrid{grid-template-columns:1fr}}
+.siteplan{position:relative;border:1px solid var(--line);border-radius:3px;background:var(--bg-2);padding:clamp(12px,2vw,26px);overflow:hidden;transition:background .8s}
+.siteplan.dusk{background:var(--ink-2)}
+.siteplan svg{width:100%;height:auto;display:block;overflow:visible;font-family:var(--font-body)}
+.sp-road{fill:var(--bg-3);stroke:none;transition:fill .8s}
+.sp-verge{fill:rgba(111,134,96,.10);stroke:none}
+.sp-bound{fill:var(--bg);stroke:var(--line-2);stroke-width:.14;transition:fill .8s}
+.sp-drive{fill:none;stroke:var(--line-2);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.32}
+.sp-aisle{fill:none;stroke:var(--line-2);stroke-width:.1;stroke-dasharray:.5 .4}
+.sp-bld{fill:var(--accent-soft);stroke:var(--fg);stroke-width:.17}
+.sp-core{fill:var(--bg);stroke:var(--fg);stroke-width:.12}
+.sp-court{fill:var(--bg);stroke:var(--line-2);stroke-width:.1;stroke-dasharray:.3 .3}
+.sp-gh{fill:var(--bg);stroke:var(--fg);stroke-width:.14}
+.sp-bay{fill:none;stroke:var(--line-2);stroke-width:.08;opacity:.95}
+.sp-bay.u{stroke-dasharray:.3 .25}
+.sp-tree{fill:rgba(111,134,96,.38);stroke:var(--line-2);stroke-width:.08;transform-box:fill-box;transform-origin:center}
+.js .sp-tree{transform:scale(0);transition:transform .9s var(--ease);transition-delay:calc(1.3s + var(--i,0)*.06s)}
+.js .siteplan.in .sp-tree{transform:none}
+.sp-hedge{fill:rgba(111,134,96,.2);stroke:none}
+.sp-txt{font-size:1.05px;letter-spacing:.18em;text-transform:uppercase;fill:var(--muted);font-weight:500;transition:fill .3s}
+.sp-txt.big{font-family:var(--font-display);font-size:2.3px;letter-spacing:.02em;text-transform:none;fill:var(--fg);font-weight:400}
+.sp-txt.dim{font-size:.95px}
+.siteplan.dusk .sp-txt{fill:#9a9da5}.siteplan.dusk .sp-txt.big{fill:var(--ivory)}
+.siteplan.dusk .sp-bound{fill:var(--ink-3)}.siteplan.dusk .sp-road{fill:var(--ink)}
+.siteplan.dusk .sp-bld{fill:rgba(210,174,116,.08);stroke:rgba(243,239,231,.5)}
+.siteplan.dusk .sp-core,.siteplan.dusk .sp-gh{fill:var(--ink-2);stroke:rgba(243,239,231,.6)}
+.siteplan.dusk .sp-bay,.siteplan.dusk .sp-aisle,.siteplan.dusk .sp-court{stroke:rgba(243,239,231,.3)}
+.siteplan.dusk .sp-drive{stroke:rgba(243,239,231,.25)}
+.sp-gate{fill:var(--accent);stroke:none}
+.sp-led{fill:none;stroke:var(--gold);stroke-width:.24;stroke-linecap:round;opacity:0;transition:opacity .8s;pointer-events:none}
+.siteplan.dusk .sp-led{opacity:1;filter:drop-shadow(0 0 .7px rgba(210,174,116,.95))}
+.sp-win{fill:#ffd89c;opacity:0;transition:opacity .8s;pointer-events:none}
+.siteplan.dusk .sp-win{opacity:.85}
+.sp-hl{fill:none;stroke:var(--accent);stroke-width:.22;opacity:0;transition:opacity .3s;pointer-events:none}
+.sp-g.on .sp-hl{opacity:1}
+.sp-g.on .sp-txt{fill:var(--fg)}
+.sp-hot{fill:transparent;stroke:none;cursor:pointer}
+.sp-route{fill:none;stroke:var(--accent);stroke-width:.32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;transition:stroke-dashoffset 3s cubic-bezier(.65,0,.35,1),opacity .4s;pointer-events:none}
+.siteplan.route .sp-route{stroke-dashoffset:0;opacity:1}
+.sp-route-dot{fill:var(--accent);opacity:0;transition:opacity .4s 2.8s;pointer-events:none}
+.siteplan.route .sp-route-dot{opacity:1}
+.js .sp-bound,.js .sp-bld,.js .sp-gh,.js .sp-drive,.js .sp-core{stroke-dasharray:1;stroke-dashoffset:1}
+.js .siteplan.in .sp-bound,.js .siteplan.in .sp-bld,.js .siteplan.in .sp-gh,.js .siteplan.in .sp-drive,.js .siteplan.in .sp-core{animation:draw 2.2s cubic-bezier(.65,0,.35,1) forwards;animation-delay:calc(var(--d,0)*1s)}
+@media (prefers-reduced-motion:reduce){.js .sp-bound,.js .sp-bld,.js .sp-gh,.js .sp-drive,.js .sp-core{stroke-dasharray:none;stroke-dashoffset:0}.js .sp-tree{transform:none}}
+.sp-legend{position:absolute;right:clamp(12px,2vw,26px);top:clamp(12px,2vw,26px);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;align-items:center;font-weight:500}
+.sp-legend i{display:inline-block;width:38px;height:1px;background:var(--fg);position:relative}
+.sp-legend i::before,.sp-legend i::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--fg)}
+.sp-legend i::before{left:0}.sp-legend i::after{right:0}
+.siteplan.dusk .sp-legend{color:#9a9da5}.siteplan.dusk .sp-legend i,.siteplan.dusk .sp-legend i::before,.siteplan.dusk .sp-legend i::after{background:var(--ivory)}
+.site-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.skeys{border-top:1px solid var(--line)}
+.skeys li{border-bottom:1px solid var(--line)}
+.skey{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:14px;align-items:baseline;width:100%;text-align:left;padding:11px 0;font-size:14px;color:var(--muted);transition:color .2s}
+.skey .k{font-size:8.5px;font-weight:500;color:var(--ivory);width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;position:relative;align-self:center}
+.skey .k::before{content:"";position:absolute;inset:1px;transform:rotate(45deg);background:var(--accent);z-index:-1}
+.skey b{color:var(--fg);font-weight:400}
+.skey .a{font-family:var(--font-display);font-size:15px;color:var(--fg);white-space:nowrap}
+.skey:hover,.skey.on{color:var(--fg)}
+.skey:hover .k::before,.skey.on .k::before{background:var(--fg)}
+.two.lower{margin-top:clamp(56px,8vh,96px);padding-top:clamp(36px,5vh,56px);border-top:1px solid var(--line)}
+
+/* ———————————————————— closing contacts ———————————————————— */
+.close-grid{grid-template-columns:1fr 1fr 1.25fr}
+@media (max-width:900px){.close-grid{grid-template-columns:1fr}}
+.contact{display:flex;flex-direction:column}
+.contact a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid var(--line);border-bottom:0;transition:color .3s}
+.contact a:last-child{border-bottom:1px solid var(--line)}
+.contact .v{font-family:var(--font-display);font-size:22px;line-height:1.1;min-width:0;overflow-wrap:anywhere}
+.contact .chip{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:8px 12px;border:1px solid var(--line-2);border-radius:999px;color:var(--muted);transition:background .3s,color .3s,border-color .3s}
+.contact .chip svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact a:hover{color:var(--gold)}
+.contact a:hover .chip,.contact a:focus-visible .chip{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="veil" id="veil" aria-hidden="true">
+  <svg viewBox="0 0 120 92"><path class="sl" d="M14,8 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.00"/><path class="sl" d="M14,19 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.06"/><path class="sl" d="M14,30 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.12"/><path class="sl" d="M14,41 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.18"/><path class="sl" d="M14,52 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.24"/><path class="sl" d="M14,63 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.30"/><path class="sl" d="M14,74 H98 a5.5,5.5 0 0 1 5.5,5.5 a5.5,5.5 0 0 1 -5.5,5.5 H14 Z" pathLength="1" style="--d:0.36"/><path class="sl g" d="M14,19 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.50"/><path class="sl g" d="M14,30 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.57"/><path class="sl g" d="M14,41 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.64"/><path class="sl g" d="M14,52 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.71"/><path class="sl g" d="M14,63 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.78"/><path class="sl g" d="M14,74 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.85"/><path class="sl g" d="M14,85 H98 a5.5,5.5 0 0 0 5.5,-5.5" pathLength="1" style="--d:0.92"/></svg>
+  <div class="vn">Heights 777 · Wuse II</div>
+  <div class="vc"><span id="vcount">00</span><small>%</small></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <a class="brand" href="#p1" aria-label="Heights 777, back to cover"><i>Heights</i><b>777</b></a>
+  <div class="cur">
+    <span class="lab" id="curlab"><span>01</span> — Cover</span>
+    <button class="idxbtn" id="menubtn" aria-haspopup="dialog" aria-controls="menu">Index</button>
+  </div>
+</header>
+
+<nav class="dots" id="dots" aria-label="Pages">
+  <a href="#p1" data-p="1" class="on">01</a>
+  <a href="#p2" data-p="2">02</a>
+  <a href="#p3" data-p="3">03</a>
+  <a href="#p4" data-p="4">04</a>
+  <a href="#p5" data-p="5">05</a>
+  <a href="#p6" data-p="6">06</a>
+  <a href="#p7" data-p="7">07</a>
+</nav>
+
+<main>
+
+<!-- ———————————————————— 01 · COVER ———————————————————— -->
+<section class="page cover" id="p1" data-tone="dark" data-label="Cover">
+  <div class="cover-media">
+    <img src="assets/corner-dusk.jpg" alt="Heights 777 at dusk: seven storeys of curved white balcony slabs, each edged with a continuous line of warm light, seen from the street corner." fetchpriority="high">
+    <div class="cover-top">Proposed residential development<br>Plot 777 CAD Zone A07 · Wuse II · Abuja FCT</div>
+    <div class="cover-body">
+      <div class="wrap">
+        <p class="eyebrow rv" style="--i:1">Parakou Street · Wuse II</p>
+        <h1 class="mark" aria-label="Heights 777">
+          <span class="line"><span class="w" style="--d:.15s">Heights</span></span>
+          <span class="line"><span class="n" style="--d:.3s">777</span></span>
+        </h1>
+        <div class="cover-sub">
+          <p class="rv" style="--i:6">Eighteen residences, seven storeys, one quiet street in Wuse II.</p>
+          <div class="cue rv" style="--i:8"><i></i>Scroll</div>
+        </div>
+        <ul class="stats">
+          <li class="stat rv" style="--i:7"><div class="num">07</div><div class="lab">Storeys</div></li>
+          <li class="stat rv" style="--i:8"><div class="num" data-count="18">18</div><div class="lab">Residences</div></li>
+          <li class="stat rv" style="--i:9"><div class="num">1–2</div><div class="lab">Bedrooms</div></li>
+          <li class="stat rv" style="--i:10"><div class="num" data-count="21">21</div><div class="lab">Parking bays</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="credits">
+    <div class="wrap">
+      <div class="cred rv" style="--i:1"><div class="k">Development</div><div class="v">Wrace Group</div><div class="s">Heights 777 · Plot 777, Wuse II</div></div>
+      <div class="cred rv" style="--i:2"><div class="k">Architect</div><div class="v">Arc. Anthony C. N. (F/2264)</div><div class="s">Abuja, FCT · Drawings dated October 2025</div></div>
+      <div class="cred rv" style="--i:3"><div class="k">Document</div><div class="v">Compiled by Mizan Qist Limited</div><div class="s">2026 · Confidential</div></div>
+    </div>
+  </div>
+  <div class="strip" aria-hidden="true"><div class="tk" id="ticker"><span>Parakou Street, Wuse II</span><span>Eighteen residences</span><span>Seven storeys</span><span>Three to a floor</span><span>Two penthouse floors</span><span>Curved slabs, edged in light</span><span>Two lifts, three stairs</span><span>Twenty-one parking bays</span><span>Polished granite throughout</span><span>Plot 777, CAD Zone A07</span></div></div>
+</section>
+
+<!-- ———————————————————— 02 · AT A GLANCE ———————————————————— -->
+<section class="page" id="p2" data-tone="light" data-label="At a glance">
+  <div class="wrap">
+    <div class="glance">
+      <div>
+        <p class="eyebrow rv"><span class="idx">01</span>At a glance</p>
+        <h2 class="title rv" style="--i:1">Seven storeys of soft white lines, <em>edged in light.</em></h2>
+        <p class="lede rv" style="--i:2">Heights 777 is a seven-storey residential building on Parakou Street, in the heart of Wuse II. Eighteen one- and two-bedroom residences occupy six floors above a covered parking level, served by two lifts and three stairs.</p>
+        <p class="body rv" style="--i:3">Every residence opens onto a planted balcony behind a frameless glass balustrade, and every slab edge carries a continuous strip of warm light. The building reads at dusk the way it reads at noon: a stack of curved white trays, floating off a charcoal core.</p>
+        <p class="body rv" style="--i:4">Interiors are finished to a single standard throughout: <strong>polished granite</strong> in living rooms and lobbies, vitrified tile in bedrooms, full-height glass sliding doors onto the balconies, and composite pivot security doors at every entrance.</p>
+        <ul class="stats">
+          <li class="stat rv" style="--i:4"><div class="num"><span data-count="1136" data-group>1,136</span><small>m²</small></div><div class="lab">Site area</div></li>
+          <li class="stat rv" style="--i:5"><div class="num"><span data-count="514">514</span><small>m²</small></div><div class="lab">Building footprint</div></li>
+          <li class="stat rv" style="--i:6"><div class="num"><span data-count="46">46</span><small>%</small></div><div class="lab">Built · 54% open</div></li>
+          <li class="stat rv" style="--i:7"><div class="num"><span data-count="3.15" data-dec="2">3.15</span><small>m</small></div><div class="lab">Floor to floor</div></li>
+        </ul>
+        <ul class="also">
+          <li class="rv" style="--i:5"><span class="num">21</span><span><b>Parking bays</b> on the plot, beneath the building and along its edges</span></li>
+          <li class="rv" style="--i:6"><span class="num">13<small style="font-family:var(--font-body);font-size:11px;color:var(--muted)"> m²</small></span><span><b>Gate house</b> on the Parakou Street frontage, with a screened entrance</span></li>
+          <li class="rv" style="--i:7"><span class="num">2 + 3</span><span><b>Two lifts and three stairs</b>: a lift and main stair at each end of the lobby, and a back stair by the courtyard</span></li>
+          <li class="rv" style="--i:8"><span class="num">23.5<small style="font-family:var(--font-body);font-size:11px;color:var(--muted)"> m</small></span><span><b>Parapet height</b> above the ground-floor slab</span></li>
+        </ul>
+      </div>
+
+      <div class="stack rv" style="--i:2" id="stack">
+        <div class="stack-fig" aria-hidden="true">
+          <svg viewBox="0 0 300 520" id="stacksvg"></svg>
+        </div>
+        <div>
+          <ol class="levels" id="levels"></ol>
+          <div class="stack-info" id="stackinfo" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pfoot"><span><b>Heights 777</b> · Plot 777 CAD Zone A07 · Parakou Street · Wuse II</span><span class="pn">02 / 07</span></div>
+  </div>
+</section>
+
+<!-- ———————————————————— 03 · THE ELEVATION ———————————————————— -->
+<section class="page" id="p3" data-tone="dark" data-label="The elevation">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <p class="eyebrow rv"><span class="idx">02</span>The elevation</p>
+        <h2 class="title rv" style="--i:1">Drawn twice: once by the sun, <em>once by its own light.</em></h2>
+      </div>
+      <p class="lede rv" style="--i:2">The same arrival view under two skies. Drag the line to move from noon to dusk and watch the slab edges take over from the daylight.</p>
+    </div>
+    <div class="elev">
+      <div class="cmp rv wipe" id="cmp" style="--i:2">
+        <img src="assets/entrance-day.jpg" alt="Entrance elevation of Heights 777 at noon, with cars parked beneath the building.">
+        <div class="cmp-b"><img src="assets/entrance-dusk.jpg" alt="The same entrance elevation at dusk, balcony edges lit by continuous LED strips."></div>
+        <div class="bar"></div>
+        <div class="knob"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div>
+        <span class="hint">Drag</span>
+        <span class="tag a">Noon</span><span class="tag b">Dusk</span>
+        <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Reveal the dusk view">
+      </div>
+      <div class="elev-copy">
+        <p class="body rv" style="--i:3">The plan is simple: three residences to a floor, two lift cores between them, and balconies wrapping the corners. The elevation makes that plan legible. Each floor is a single white slab with rounded ends. The glazing sits well back from the slab edge, so the trays read as continuous, and the planting on every balcony softens the line without breaking it.</p>
+        <ol class="notes">
+          <li class="note rv" style="--i:4"><span class="num">01</span><div><h4>Curved slab edges</h4><p>Every balcony slab rounds its corners and carries a recessed LED strip along its full length. At dusk the building is outlined floor by floor, with no visible fittings.</p></div></li>
+          <li class="note rv" style="--i:5"><span class="num">02</span><div><h4>Glass, set back and planted</h4><p>Floor-to-ceiling glazing behind frameless glass balustrades. Planters run along the balcony edge on every floor, so the greenery of the street continues up the building.</p></div></li>
+          <li class="note rv" style="--i:6"><span class="num">03</span><div><h4>A charcoal core</h4><p>The lift and stair cores are clad dark, with a tall fluted glass panel and slender vertical light lines. Against it, the white wings appear to float.</p></div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="trio">
+      <figure class="fig rv" data-lb="2" style="--i:1"><div class="img wipe"><img src="assets/corner-dusk.jpg" alt="Corner view at dusk, LED strips tracing every balcony" loading="lazy"></div><figcaption><span><b>Corner at dusk</b></span><i>Visualisation 02</i></figcaption></figure>
+      <figure class="fig rv" data-lb="5" style="--i:2"><div class="img wipe"><img src="assets/balconies-aerial.jpg" alt="Looking down the planted balconies from above" loading="lazy"></div><figcaption><span><b>Balconies from above</b></span><i>Visualisation 05</i></figcaption></figure>
+      <figure class="fig rv" data-lb="6" style="--i:3"><div class="img wipe"><img src="assets/street-day.jpg" alt="Street approach by day along the boundary wall" loading="lazy"></div><figcaption><span><b>Street approach</b></span><i>Visualisation 06</i></figcaption></figure>
+    </div>
+    <div class="pfoot"><span><b>Heights 777</b> · Plot 777 CAD Zone A07 · Parakou Street · Wuse II</span><span class="pn">03 / 07</span></div>
+  </div>
+</section>
+
+<!-- ———————————————————— 04 · THE RESIDENCES ———————————————————— -->
+<section class="page" id="p4" data-tone="light" data-label="The residences">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <p class="eyebrow rv"><span class="idx">03</span>The residences</p>
+        <h2 class="title rv" style="--i:1">Three to a floor. Every bedroom with its own <em>dressing room and bath.</em></h2>
+      </div>
+      <p class="lede rv" style="--i:2">Sixteen two-bedroom residences fill floors 01 to 06. On the top two floors the west wing becomes a one-bedroom penthouse with a second lounge and, on the crowning floor, a private infinity pool. Hover a number on the plan, or a room in the list.</p>
+    </div>
+
+    <div class="tabs rv" role="tablist" aria-label="Floor plans">
+      <button class="tab" role="tab" aria-selected="true" data-floor="typical" id="tab-typical">Typical floor · 01 – 04</button>
+      <button class="tab" role="tab" aria-selected="false" data-floor="upper" id="tab-upper">Upper floors · 05 – 06</button>
+    </div>
+    <div class="plan-wrap">
+      <div>
+        <div class="plan-panel rv" style="--i:1">
+          <div class="plan wipe soft" id="plan">
+            <img src="assets/plan-typical.png" alt="Typical floor plan: west, centre and east residences around two lift and stair cores, with balconies along the front and back." data-floor="typical">
+            <img src="assets/plan-upper.png" alt="Upper floor plan: the west wing reconfigured as a one-bedroom penthouse with a lounge and an infinity pool." data-floor="upper" hidden loading="lazy">
+            <div class="zone" data-w="west"><i>West</i></div>
+            <div class="zone" data-w="centre"><i>Centre</i></div>
+            <div class="zone" data-w="east"><i>East</i></div>
+            <div class="labs" id="labels"></div>
+            <div class="north" aria-hidden="true"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="15"/><path d="M17 5l4 12-4-3-4 3z"/><text x="17" y="30" text-anchor="middle">N</text></svg></div>
+          </div>
+          <div class="plan-tools">
+            <div class="seg" role="group" aria-label="Plan labels"><button data-mode="num" aria-pressed="true">Numbered</button><button data-mode="off" aria-pressed="false">Plan only</button></div>
+            <button class="tbtn" id="enlarge" aria-label="Enlarge the plan and zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Enlarge and zoom</button>
+          </div>
+          <div class="plan-foot">
+            <span id="planlab"><b>Typical floor</b> · north to the top · Parakou Street runs along the bottom edge</span>
+            <span class="keys">
+              <button class="key" data-w="west">West</button>
+              <button class="key" data-w="centre">Centre</button>
+              <button class="key" data-w="east">East</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="legend rv" id="legend" style="--i:2"></div>
+    </div>
+
+    <div class="rcards" id="rcards">
+      <article class="rcard rv" data-w="west" data-floor="typical" style="--i:1">
+        <div class="rh"><h3>West residence</h3><span class="rt">Two bedrooms</span></div>
+        <p class="rsum">The largest of the three, wrapping the north-west corner. The living room and a separate kitchen open onto the deepest of the front balconies; both bedrooms have their own dressing room and bath.</p>
+        <ul class="rlist">
+          <li><b>Living room</b></li>
+          <li><b>Kitchen</b>, separate, with its own balcony</li>
+          <li><b>Bedroom 1</b> with dressing room and bath</li>
+          <li><b>Bedroom 2</b> with dressing room and bath</li>
+          <li><b>Entrance lobby</b> and guest WC</li>
+          <li><b>Balconies</b>, front and rear</li>
+        </ul>
+      </article>
+      <article class="rcard rv" data-w="west" data-floor="upper" hidden style="--i:1">
+        <div class="rh"><h3>West penthouse</h3><span class="rt">One bedroom · pool</span></div>
+        <p class="rsum">The west wing reconfigured: a living room, a bedroom suite, a small kitchen and a second, larger lounge that opens, on the top floor, onto a private infinity pool at the corner of the building.</p>
+        <ul class="rlist">
+          <li><b>Living room</b></li>
+          <li><b>Lounge</b>, with the infinity pool on the top floor</li>
+          <li><b>Kitchen</b></li>
+          <li><b>Bedroom suite</b> with dressing room and bath</li>
+          <li><b>Entrance lobby</b> and guest WC</li>
+          <li><b>Balconies</b>, front and rear</li>
+        </ul>
+      </article>
+      <article class="rcard rv" data-w="centre" style="--i:2">
+        <div class="rh"><h3>Centre residence</h3><span class="rt">Two bedrooms</span></div>
+        <p class="rsum">Entered from the main lobby beside the lift. The living room faces the street; the kitchen and both bedrooms sit along the quiet rear elevation, each with its own balcony.</p>
+        <ul class="rlist">
+          <li><b>Living room</b>, facing the street</li>
+          <li><b>Kitchen</b>, on the rear elevation</li>
+          <li><b>Bedroom 1</b> with dressing room and bath</li>
+          <li><b>Bedroom 2</b> with dressing room and bath</li>
+          <li><b>Entrance lobby</b> and guest WC</li>
+          <li><b>Balconies</b>, front and rear</li>
+        </ul>
+      </article>
+      <article class="rcard rv" data-w="east" style="--i:3">
+        <div class="rh"><h3>East residence</h3><span class="rt">Two bedrooms</span></div>
+        <p class="rsum">Mirrors the west plan at the north-east corner. A living room with a deep front balcony, a separate kitchen, and two bedrooms of equal standing, each with a dressing room and bath.</p>
+        <ul class="rlist">
+          <li><b>Living room</b></li>
+          <li><b>Kitchen</b>, separate, with its own balcony</li>
+          <li><b>Bedroom 1</b> with dressing room and bath</li>
+          <li><b>Bedroom 2</b> with dressing room and bath</li>
+          <li><b>Entrance lobby</b> and guest WC</li>
+          <li><b>Balconies</b>, front and rear</li>
+        </ul>
+      </article>
+    </div>
+    <p class="foot-note rv">Plans redrawn from the architectural drawings of October 2025 with dimensions and annotations removed; room positions are marked from the labelled drawings. Layouts and finishes remain subject to final design, approvals and construction.</p>
+    <div class="pfoot"><span><b>Heights 777</b> · Plot 777 CAD Zone A07 · Parakou Street · Wuse II</span><span class="pn">04 / 07</span></div>
+  </div>
+</section>
+
+<!-- ———————————————————— 05 · VISUALISATIONS ———————————————————— -->
+<section class="page" id="p5" data-tone="dark" data-label="Visualisations">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <p class="eyebrow rv"><span class="idx">04</span>Visualisations</p>
+        <h2 class="title rv" style="--i:1">Seven views, <em>two skies.</em></h2>
+      </div>
+      <p class="lede rv" style="--i:2">The front elevation under overcast and clear skies, the corner at dusk, the arrival by day and by night, and the balconies from above. Drag the strip, or open any view.</p>
+    </div>
+  </div>
+  <div class="rail-wrap rv" style="--i:2">
+    <div class="rail" id="rail">
+      <figure class="fig" data-lb="0" style="--i:0"><div class="img"><img src="assets/front-overcast.jpg" alt="Front elevation under an overcast sky, cars passing on Parakou Street" loading="lazy"></div><figcaption><span><b>Front elevation</b> · overcast</span><i>01</i></figcaption></figure>
+      <figure class="fig" data-lb="1" style="--i:1"><div class="img"><img src="assets/front-clear.jpg" alt="Front elevation under a clear sky" loading="lazy"></div><figcaption><span><b>Front elevation</b> · clear sky</span><i>02</i></figcaption></figure>
+      <figure class="fig" data-lb="2" style="--i:2"><div class="img"><img src="assets/corner-dusk.jpg" alt="Corner at dusk" loading="lazy"></div><figcaption><span><b>Corner</b> · dusk</span><i>03</i></figcaption></figure>
+      <figure class="fig" data-lb="3" style="--i:3"><div class="img"><img src="assets/entrance-dusk.jpg" alt="Arrival and parking level at dusk" loading="lazy"></div><figcaption><span><b>Arrival</b> · dusk</span><i>04</i></figcaption></figure>
+      <figure class="fig" data-lb="4" style="--i:4"><div class="img"><img src="assets/entrance-day.jpg" alt="Arrival and parking level at noon" loading="lazy"></div><figcaption><span><b>Arrival</b> · noon</span><i>05</i></figcaption></figure>
+      <figure class="fig" data-lb="5" style="--i:5"><div class="img"><img src="assets/balconies-aerial.jpg" alt="Balconies from above" loading="lazy"></div><figcaption><span><b>Balconies</b> · from above</span><i>06</i></figcaption></figure>
+      <figure class="fig" data-lb="6" style="--i:6"><div class="img"><img src="assets/street-day.jpg" alt="Street approach by day" loading="lazy"></div><figcaption><span><b>Street approach</b> · day</span><i>07</i></figcaption></figure>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail-ctl rv">
+      <span class="cnt"><b id="railidx">01</b> / 07</span>
+      <div class="arrows"><button id="railprev" aria-label="Previous view"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button id="railnext" aria-label="Next view"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="section-panel">
+      <div class="draw rv wipe wipe-x soft" style="--i:1"><img src="assets/section.png" alt="Long section through the building: six residential floors above the parking level, the lifts and stairs at the centre, and a steel roof truss behind the parapet." loading="lazy"></div>
+      <div>
+        <p class="eyebrow rv"><span class="idx">Section A–A</span>Through the lift core</p>
+        <h3 class="title rv" style="--i:1;font-size:clamp(26px,2.6vw,40px);margin:16px 0 18px">Six floors of living over one of arrival.</h3>
+        <ul class="facts">
+          <li class="rv" style="--i:2"><span class="num">3.15<small>m</small></span><span><b>Floor to floor</b>, every level, with 350 mm reinforced-concrete beams</span></li>
+          <li class="rv" style="--i:3"><span class="num">0.45<small>m</small></span><span><b>Ground level</b> sits this far below the parking slab; the first residences begin at +3.15 m</span></li>
+          <li class="rv" style="--i:4"><span class="num">22.05<small>m</small></span><span><b>Roof slab</b>, with a PU-insulated longspan aluminium roof on a steel truss above</span></li>
+          <li class="rv" style="--i:5"><span class="num">2 + 3</span><span><b>Two lifts, three stairs</b>: a core at each end of the lobby, and a back stair beside the courtyard</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pfoot"><span><b>Heights 777</b> · Plot 777 CAD Zone A07 · Parakou Street · Wuse II</span><span class="pn">05 / 07</span></div>
+  </div>
+</section>
+
+<!-- ———————————————————— 06 · LOCATION & SPECIFICATION ———————————————————— -->
+<section class="page" id="p6" data-tone="light" data-label="Location & specification">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <p class="eyebrow rv"><span class="idx">05</span>Location</p>
+        <h2 class="title rv" style="--i:1">Wuse II, on a street that <em>stays quiet.</em></h2>
+      </div>
+      <p class="lede rv" style="--i:2">Parakou Street runs through the residential heart of Wuse II, a few minutes from the restaurants and shops of Aminu Kano Crescent, with Maitama to the north and the Central Business District to the south-east. The plot fronts the street along its full southern edge. Drawn here in metres from the site plan sheet.</p>
+    </div>
+    <div class="sitegrid">
+      <div>
+        <div class="siteplan rv" id="siteplan" style="--i:1" role="img" aria-label="Site plan of Plot 777: a 41 by 28 metre walled plot fronting Parakou Street on the south, the seven-storey building set in the middle with parking beneath it, a gate house at the south-west corner beside the vehicle entrance, parking bays along the west, north and east boundaries, and street trees along the verge.">
+          <svg id="sitesvg" viewBox="-3 -3.6 48 40.6"></svg>
+        </div>
+        <div class="site-tools">
+          <button class="tbtn" id="routebtn" aria-pressed="false"><i></i>Trace the arrival</button>
+          <button class="tbtn" id="duskbtn" aria-pressed="false"><i></i>Light the slab edges</button>
+        </div>
+      </div>
+      <div>
+        <ol class="skeys" id="skeys">
+          <li><button class="skey" data-g="bld"><span class="k">1</span><span><b>The building</b> · seven storeys on a 35 by 15 m footprint, held back from every boundary</span><span class="a">514 m²</span></button></li>
+          <li><button class="skey" data-g="under"><span class="k">2</span><span><b>Parking beneath</b> · the whole ground level is open; cars turn in from the gate and park under the residences</span><span class="a">6 bays</span></button></li>
+          <li><button class="skey" data-g="bays"><span class="k">3</span><span><b>Perimeter bays</b> · along the west, north and east boundaries, reached through the undercroft</span><span class="a">15 bays</span></button></li>
+          <li><button class="skey" data-g="gate"><span class="k">4</span><span><b>Gate house and entrance</b> · a screened vehicle entrance on Parakou Street with the gate house beside it</span><span class="a">south-west</span></button></li>
+          <li><button class="skey" data-g="cores"><span class="k">5</span><span><b>Lift cores</b> · a lift and main stair at each end of the lobby, reached from the parking level</span><span class="a">two</span></button></li>
+          <li><button class="skey" data-g="court"><span class="k">6</span><span><b>Courtyard lightwell</b> · a small open court beside the west core brings daylight into every lobby</span><span class="a">centre</span></button></li>
+          <li><button class="skey" data-g="green"><span class="k">7</span><span><b>Trees and planting</b> · eight street trees along the verge, hedges inside the front wall, planters on every balcony</span><span class="a">verge</span></button></li>
+        </ol>
+        <p class="foot-note rv" style="margin-top:14px">Indicative, redrawn from site plan sheet A101 (1:150, October 2025). Bay positions are approximate; the plot, the building footprint and the gate house are shown as on the sheet.</p>
+      </div>
+    </div>
+
+    <div class="two lower">
+      <div>
+        <p class="eyebrow rv"><span class="idx">05</span>Within reach</p>
+        <h3 class="title rv" style="--i:1;font-size:clamp(26px,2.6vw,40px);margin:16px 0 18px">Between Maitama and the city.</h3>
+        <ul class="drive">
+          <li class="rv" style="--i:4"><span class="num">5<small>min</small></span><span><b>Maitama</b>, across Aminu Kano Crescent: embassies, Transcorp Hilton, banks</span></li>
+          <li class="rv" style="--i:5"><span class="num">10<small>min</small></span><span><b>Central Business District</b>, Wuse Market and Banex Plaza</span></li>
+          <li class="rv" style="--i:6"><span class="num">15<small>min</small></span><span><b>Jabi Lake Mall</b> and the Jabi lakefront</span></li>
+          <li class="rv" style="--i:7"><span class="num">40<small>min</small></span><span><b>Nnamdi Azikiwe International Airport</b> by the airport road</span></li>
+        </ul>
+        <p class="foot-note rv" style="margin-top:14px">Drive times are approximate and off-peak.</p>
+      </div>
+      <div>
+        <p class="eyebrow rv"><span class="idx">06</span>Specification</p>
+        <h2 class="title rv" style="--i:1">One standard, <em>every floor.</em></h2>
+        <p class="body rv" style="--i:2">Finishes and systems as set out in the architectural drawings and schedules. Selections shown in the visualisations are indicative of quality and tone.</p>
+        <div class="spec">
+          <div class="spec-group rv" style="--i:3">
+            <h4>Structure &amp; envelope</h4>
+            <dl>
+              <div class="spec-row"><dt>Frame</dt><dd>Reinforced-concrete frame with 350 mm beams; 3.15 m floor to floor on every level</dd></div>
+              <div class="spec-row"><dt>Walls</dt><dd>230 mm sandcrete block in stretcher bond; the lift and stair core clad in dark stone-effect panels</dd></div>
+              <div class="spec-row"><dt>Balconies</dt><dd>Curved slab edges with recessed continuous LED lighting; frameless glass balustrades; integral planters</dd></div>
+              <div class="spec-row"><dt>Roof</dt><dd>0.9 gauge longspan aluminium sheeting, PU-insulated, on a steel truss behind a 1.5 m parapet</dd></div>
+            </dl>
+          </div>
+          <div class="spec-group rv" style="--i:4">
+            <h4>Finishes</h4>
+            <dl>
+              <div class="spec-row"><dt>Living &amp; lobbies</dt><dd>1200 × 600 × 12 mm polished granite on a 50 mm screed</dd></div>
+              <div class="spec-row"><dt>Bedrooms</dt><dd>600 × 600 × 10 mm vitrified floor tiles</dd></div>
+              <div class="spec-row"><dt>Bathrooms</dt><dd>Every bedroom en suite, with its own walk-in dressing room; a guest WC in every residence</dd></div>
+              <div class="spec-row"><dt>Parking level</dt><dd>600 × 300 glazed ceramic tiles on screed at the arrival level</dd></div>
+            </dl>
+          </div>
+          <div class="spec-group rv" style="--i:5">
+            <h4>Openings &amp; security</h4>
+            <dl>
+              <div class="spec-row"><dt>Residence entrance</dt><dd>Double-panel composite pivot security doors to every residence and lobby</dd></div>
+              <div class="spec-row"><dt>To balconies</dt><dd>Triple-panel glass sliding doors on aluminium frames from living rooms, bedrooms, kitchens and dining</dd></div>
+              <div class="spec-row"><dt>Internal</dt><dd>Steel security swing doors on aluminium frames to bedrooms and kitchens; glazed cut-out doors to lobbies and terraces</dd></div>
+              <div class="spec-row"><dt>Site</dt><dd>Walled plot with a 13 m² gate house and a screened vehicle entrance on Parakou Street</dd></div>
+            </dl>
+          </div>
+          <div class="spec-group rv" style="--i:6">
+            <h4>Circulation &amp; arrival</h4>
+            <dl>
+              <div class="spec-row"><dt>Lifts</dt><dd>Two passenger lifts, one in each core, from the parking level to every residential floor</dd></div>
+              <div class="spec-row"><dt>Stairs</dt><dd>A main stair beside each lift, and a back stair by the courtyard</dd></div>
+              <div class="spec-row"><dt>Parking</dt><dd>21 bays: beneath the building at the arrival level and along the plot edges</dd></div>
+              <div class="spec-row"><dt>Daylight</dt><dd>A lightwell courtyard beside the core brings daylight into the lobbies on every floor</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pfoot"><span><b>Heights 777</b> · Plot 777 CAD Zone A07 · Parakou Street · Wuse II</span><span class="pn">06 / 07</span></div>
+  </div>
+</section>
+
+<!-- ———————————————————— 07 · CLOSING ———————————————————— -->
+<section class="page close" id="p7" data-tone="dark" data-label="Reserve">
+  <div class="bg"><img src="assets/front-overcast.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="idx">07</span>Next step</p>
+    <h2 class="big rv" style="--i:1">Reserve a <em>residence.</em></h2>
+    <p class="lede rv" style="--i:2">Eighteen residences across six floors, three to a floor, with the two penthouse floors to the west. Plans, areas and the specification are settled at design stage; the drawings are available on request.</p>
+    <div class="close-grid">
+      <div class="rv" style="--i:3">
+        <h4>In this document</h4>
+        <ol class="toc">
+          <li><a href="#p2"><span class="num">01</span><span>At a glance · the floor stack</span></a></li>
+          <li><a href="#p3"><span class="num">02</span><span>The elevation · noon to dusk</span></a></li>
+          <li><a href="#p4"><span class="num">03</span><span>The residences · plans</span></a></li>
+          <li><a href="#p5"><span class="num">04</span><span>Visualisations · section</span></a></li>
+          <li><a href="#p6"><span class="num">05</span><span>Location · site plan</span></a></li>
+          <li><a href="#p6"><span class="num">06</span><span>Specification</span></a></li>
+        </ol>
+      </div>
+      <div class="rv" style="--i:4">
+        <h4>Project</h4>
+        <p class="who"><b>Heights 777</b>Plot 777, CAD Zone A07<br>Parakou Street, Wuse II, Abuja FCT</p>
+        <p class="who"><b>Development</b>Wrace Group</p>
+        <p class="who"><b>Architect</b>Arc. Anthony C. N. (F/2264)<br>Drawings dated October 2025</p>
+      </div>
+      <div class="rv" style="--i:5">
+        <h4>Enquiries</h4>
+        <p class="who"><b>Mizan Qist Limited</b>Document compiled 2026</p>
+        <div class="contact" style="margin-top:12px">
+          <a href="https://wa.me/message/CL4UJVGMQEHBK1?src=qr" target="_blank" rel="noopener" aria-label="Message Mizan Qist on WhatsApp, +44 7931 814601"><span class="v">+44 7931 814601</span><span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.1z"/><path d="M9.2 8.8c.2 2.4 2.2 4.6 4.6 5.2l1.3-1.3 2 1-.6 1.8c-3.9.6-8.6-4-8.3-8.1L10 6.7l1.1 2z"/></svg>WhatsApp</span></a>
+          <a href="tel:+2348086666206" aria-label="Call Mizan Qist now on +234 808 6666 206"><span class="v">+234 808 6666 206</span><span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5A15.5 15.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg>Call now</span></a>
+          <a href="mailto:mizanqistltd@gmail.com"><span class="v">mizanqistltd@gmail.com</span><span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Email</span></a>
+          <a href="https://www.instagram.com/mizanqistltd?stkn=MTNvcmwzc2F5MjVvMQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="Mizan Qist on Instagram, @mizanqistltd"><span class="v">@mizanqistltd</span><span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17" cy="7" r=".6" fill="currentColor"/></svg>Instagram</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="disc rv">The information in this brochure has been prepared with care from the architectural drawings dated October 2025 and the visualisations supplied for the project. Visualisations are artists' impressions. Areas are indicative and measured from the drawings; layouts, finishes, planting and lighting remain subject to final design, statutory approvals and construction. Nothing here forms part of an offer or contract.</p>
+    <div class="pfoot"><span><b>Heights 777</b> · Wuse II · Abuja FCT · 2026</span><span class="pn">07 / 07</span></div>
+  </div>
+</section>
+
+</main>
+
+<!-- index overlay -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Index" hidden>
+  <div class="mhead"><span class="brand"><i>Heights</i> <b>777</b></span><button class="mclose" id="menuclose">Close</button></div>
+  <ol>
+    <li style="--i:0"><a href="#p1"><span class="num">01</span><span><span class="t">Cover</span><span class="s">Heights 777 · Parakou Street</span></span></a></li>
+    <li style="--i:1"><a href="#p2"><span class="num">02</span><span><span class="t">At a glance</span><span class="s">Site, footprint, the floor stack</span></span></a></li>
+    <li style="--i:2"><a href="#p3"><span class="num">03</span><span><span class="t">The elevation</span><span class="s">Noon to dusk</span></span></a></li>
+    <li style="--i:3"><a href="#p4"><span class="num">04</span><span><span class="t">The residences</span><span class="s">Plans and room schedules</span></span></a></li>
+    <li style="--i:4"><a href="#p5"><span class="num">05</span><span><span class="t">Visualisations</span><span class="s">Seven views and the section</span></span></a></li>
+    <li style="--i:5"><a href="#p6"><span class="num">06</span><span><span class="t">Location &amp; specification</span><span class="s">Wuse II · finishes and systems</span></span></a></li>
+    <li style="--i:6"><a href="#p7"><span class="num">07</span><span><span class="t">Reserve</span><span class="s">Contents, credits and enquiries</span></span></a></li>
+  </ol>
+</div>
+
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged visualisation" hidden>
+  <div class="lbh"><span class="cnt" id="lbcnt">01 / 07</span><div class="zoomctl" id="zoomctl" hidden><button id="zout" aria-label="Zoom out">−</button><span id="zlab">100%</span><button id="zin" aria-label="Zoom in">+</button><button id="zreset">Fit</button></div><button class="lbclose" id="lbclose">Close</button></div>
+  <figure id="lbfig"><img id="lbimg" src="" alt=""></figure>
+  <div class="stage" id="stage" hidden><img id="zimg" alt=""></div>
+  <div class="lbf">
+    <figcaption id="lbcap"></figcaption>
+    <div class="arrows"><button id="lbprev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button id="lbnext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var d = document, root = d.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s, c){ return (c||d).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c||d).querySelectorAll(s)); };
+
+  /* ——— loading veil: count while the cover image arrives, then lift and start the cover ——— */
+  var veil = $('#veil'), vcount = $('#vcount'), cover = $('#p1');
+  function startCover(){ cover.classList.add('in'); $$('.rv', cover).forEach(function(r){ r.classList.add('in'); }); $$('[data-count]', cover).forEach(countUp); }
+  if(reduce || !veil){ startCover(); }
+  else {
+    var t0 = null, vdur = 1500, ready = false, cim = new Image(); cim.onload = cim.onerror = function(){ ready = true; }; cim.src = $('.cover-media img').currentSrc || $('.cover-media img').src;
+    var finished = false;
+    function finish(){ if(finished) return; finished = true; setTimeout(function(){ veil.classList.add('off'); startCover(); setTimeout(function(){ veil.style.display = 'none'; }, 1100); }, 250); }
+    function vtick(t){ if(t0===null) t0 = t; var p = Math.min(1, (t-t0)/vdur), e = 1-Math.pow(1-p,3); vcount.textContent = String(Math.round(e*100)).padStart(2,'0'); if(p<1 || !ready) requestAnimationFrame(vtick); else finish(); }
+    requestAnimationFrame(vtick); setTimeout(finish, 5000);
+  }
+  var tk = $('#ticker'); if(tk) tk.innerHTML += tk.innerHTML;
+
+  /* ——— reveal on scroll ——— */
+  var revealed = new WeakSet();
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !revealed.has(e.target)){
+        revealed.add(e.target); e.target.classList.add('in'); io.unobserve(e.target);
+        $$('[data-count]', e.target).forEach(countUp);
+        if(e.target.hasAttribute('data-count')) countUp(e.target);
+      }
+    });
+  }, {rootMargin:'0px 0px -40px 0px', threshold:0.01});
+  var rvs = $$('.rv, .rv-line, .wipe').filter(function(x){ return !cover.contains(x); }); rvs.forEach(function(el){ io.observe(el); });
+  function revealAll(){ rvs.forEach(function(el){ if(!revealed.has(el)){ revealed.add(el); el.classList.add('in'); $$('[data-count]', el).forEach(countUp); } }); }
+  window.addEventListener('scroll', function(){ if(window.scrollY + window.innerHeight >= root.scrollHeight - 4) revealAll(); }, {passive:true});
+
+  /* ——— count up ——— */
+  function countUp(el){
+    if(reduce || el.dataset.done) return; el.dataset.done = '1';
+    var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec||'0',10), group = el.hasAttribute('data-group');
+    var start = null, dur = 1500;
+    var fmt = function(v){ var s = v.toFixed(dec); if(group){ s = Number(s).toLocaleString('en-GB',{minimumFractionDigits:dec,maximumFractionDigits:dec}); } return s; };
+    function step(t){ if(start===null) start = t; var p = Math.min(1,(t-start)/dur); var e = 1-Math.pow(1-p,4); el.textContent = fmt(target*e); if(p<1) requestAnimationFrame(step); else el.textContent = fmt(target); }
+    requestAnimationFrame(step);
+  }
+
+  /* ——— page tracking: header label, tone, dots, progress ——— */
+  var pages = $$('.page'), top = $('#top'), dots = $('#dots'), curlab = $('#curlab'), prog = $('#prog');
+  var pio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var p = e.target, idx = pages.indexOf(p)+1, light = p.dataset.tone==='light';
+      top.classList.toggle('on-light', light); dots.classList.toggle('on-light', light);
+      curlab.innerHTML = '<span>'+String(idx).padStart(2,'0')+'</span> — '+p.dataset.label;
+      $$('a', dots).forEach(function(a){ a.classList.toggle('on', a.dataset.p==String(idx)); });
+    });
+  }, {rootMargin:'-64px 0px -85% 0px', threshold:0});
+  pages.forEach(function(p){ pio.observe(p); });
+
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var h = root.scrollHeight - window.innerHeight; prog.style.transform = 'scaleX('+(h>0? window.scrollY/h : 0)+')';
+      parallax(); ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll);
+
+  /* ——— parallax on media: wrap each image so drift (wrapper) and reveal (image) never fight ——— */
+  $$('.fig .img > img, .close .bg > img').forEach(function(img){ var w = d.createElement('div'); w.className = 'pxw'; img.parentNode.insertBefore(w, img); w.appendChild(img); });
+  var pxs = $$('.pxw'), sda = window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+  var canPx = !reduce && !sda && window.matchMedia('(min-width: 800px)').matches;
+  function parallax(){
+    if(!canPx) return;
+    var vh = window.innerHeight;
+    pxs.forEach(function(w){
+      var r = w.parentElement.getBoundingClientRect(); if(r.bottom<0||r.top>vh) return;
+      var c = (r.top + r.height/2 - vh/2)/vh; /* -1 .. 1 */
+      var bg = !!w.closest('.bg'), amt = bg ? -c*9 : c*7;
+      w.style.transform = 'translate3d(0,'+amt.toFixed(2)+'%,0) scale('+(bg?1.2:1.16)+')';
+    });
+  }
+  onScroll();
+
+  /* ——— floor stack ——— */
+  var LEVELS = [
+    {code:'RF', name:'Roof', tag:'Plant · truss', h:'Roof', sub:'+22.05 m slab', text:'A PU-insulated longspan aluminium roof on a steel truss, hidden behind a 1.5 m parapet at +23.55 m. Drainage runs to a concrete slab at the eaves.', rooms:[]},
+    {code:'06', name:'Sixth floor', tag:'3 residences', h:'Sixth floor', sub:'Penthouse level', text:'Two two-bedroom residences at the centre and east, and the west penthouse: a one-bedroom residence whose lounge opens onto a private infinity pool at the corner of the building.', rooms:['One-bedroom penthouse','Lounge and infinity pool','Two two-bedroom residences']},
+    {code:'05', name:'Fifth floor', tag:'3 residences', h:'Fifth floor', sub:'Penthouse level', text:'The same plan as the floor above without the pool: centre and east two-bedroom residences, and the west wing arranged as a one-bedroom penthouse with a second lounge.', rooms:['One-bedroom penthouse','Second lounge','Two two-bedroom residences']},
+    {code:'04', name:'Fourth floor', tag:'3 residences', h:'Fourth floor', sub:'Typical plan', text:'Three two-bedroom residences: west, centre and east, each with a walk-in dressing room and bath to both bedrooms, a guest WC and balconies front and back.', rooms:['Three two-bedroom residences','Six en-suite bedrooms','Balconies front and rear']},
+    {code:'03', name:'Third floor', tag:'3 residences', h:'Third floor', sub:'Typical plan', text:'Three two-bedroom residences: west, centre and east, each with a walk-in dressing room and bath to both bedrooms, a guest WC and balconies front and back.', rooms:['Three two-bedroom residences','Six en-suite bedrooms','Balconies front and rear']},
+    {code:'02', name:'Second floor', tag:'3 residences', h:'Second floor', sub:'Typical plan', text:'Three two-bedroom residences. On this floor the front balconies are at their deepest across all three residences.', rooms:['Three two-bedroom residences','Six en-suite bedrooms','The deepest front balconies']},
+    {code:'01', name:'First floor', tag:'3 residences', h:'First floor', sub:'+3.15 m · first residences', text:'The first residential floor, one level above the parking. Three two-bedroom residences around the lift, the main stair and a small daylight courtyard.', rooms:['Three two-bedroom residences','Two lift cores','Daylight courtyard']},
+    {code:'G', name:'Ground', tag:'Arrival · parking', h:'Ground', sub:'Arrival and parking', text:'The whole ground level is given to arrival: the lift lobby, both stair cores and covered parking beneath the building, with more bays along the plot edges and a gate house on the street.', rooms:['Parking for 21 cars','Gate house','Two lifts, three stairs']}
+  ];
+  var svg = $('#stacksvg'), list = $('#levels'), info = $('#stackinfo'), active = 6, timer;
+  (function build(){
+    var ns = 'http://www.w3.org/2000/svg', W = 300, x = 40, w = 210, r = 14, top0 = 34, sh = 40, gap = 12;
+    var ghost = d.createElementNS(ns,'path'); ghost.setAttribute('class','ghost'); ghost.setAttribute('pathLength','1');
+    var parapetY = top0 - 8;
+    ghost.setAttribute('d','M'+(x-6)+' '+parapetY+' H'+(x+w+16)); svg.appendChild(ghost);
+    LEVELS.forEach(function(L, i){
+      var y = top0 + i*(sh+gap), isG = i===LEVELS.length-1, isR = i===0;
+      var hh = isG ? sh+14 : sh;
+      var p = d.createElementNS(ns,'path'); p.setAttribute('class','slab'); p.dataset.i = i;
+      if(isR){ p.setAttribute('d','M'+x+' '+y+' H'+(x+w)+' a'+r+' '+r+' 0 0 1 '+r+' '+r+' V'+(y+hh-r)+' a'+r+' '+r+' 0 0 1 -'+r+' '+r+' H'+x+' Z'); }
+      else if(isG){ p.setAttribute('d','M'+(x-10)+' '+y+' H'+(x+w+10)+' V'+(y+hh)+' H'+(x-10)+' Z'); }
+      else { p.setAttribute('d','M'+x+' '+y+' H'+(x+w)+' a'+r+' '+r+' 0 0 1 '+r+' '+r+' V'+(y+hh-r)+' a'+r+' '+r+' 0 0 1 -'+r+' '+r+' H'+x+' Z'); }
+      p.setAttribute('pathLength','1'); p.style.setProperty('--d', (0.08*(LEVELS.length-1-i)).toFixed(2)+'s');
+      svg.appendChild(p);
+      if(isG){ /* pilotis + cars */
+        for(var k=0;k<6;k++){ var c = d.createElementNS(ns,'rect'); c.setAttribute('class','ghost'); c.setAttribute('x', x+8+k*40); c.setAttribute('y', y+8); c.setAttribute('width',4); c.setAttribute('height',hh-16); svg.appendChild(c); }
+        for(var m=0;m<5;m++){ var car = d.createElementNS(ns,'rect'); car.setAttribute('class','ghost'); car.setAttribute('x', x+20+m*40); car.setAttribute('y', y+hh-22); car.setAttribute('width',22); car.setAttribute('height',10); car.setAttribute('rx',3); svg.appendChild(car); }
+      } else if(!isR){ /* glazing hint */
+        var g = d.createElementNS(ns,'rect'); g.setAttribute('class','ghost'); g.setAttribute('x', x+14); g.setAttribute('y', y+8); g.setAttribute('width', w-40); g.setAttribute('height', hh-16); svg.appendChild(g);
+      }
+      var led = d.createElementNS(ns,'path'); led.setAttribute('class','led'); led.dataset.i = i; led.setAttribute('pathLength','1');
+      led.setAttribute('d', isG ? 'M'+(x-10)+' '+(y+hh)+' H'+(x+w+10) : 'M'+x+' '+(y+hh)+' H'+(x+w)+' a'+r+' '+r+' 0 0 0 '+r+' -'+r);
+      svg.appendChild(led);
+      var t = d.createElementNS(ns,'text'); t.setAttribute('class','lvl-lab'); t.dataset.i = i; t.style.setProperty('--d', (0.08*(LEVELS.length-1-i)).toFixed(2)+'s'); t.setAttribute('x', x-14); t.setAttribute('y', y+hh/2+3); t.setAttribute('text-anchor','end'); t.textContent = L.code; svg.appendChild(t);
+      var li = d.createElement('li'); var b = d.createElement('button'); b.className = 'lvl'; b.type = 'button'; b.dataset.i = i; b.style.setProperty('--i', i);
+      b.innerHTML = '<span class="c">'+L.code+'</span><span class="n">'+L.name+'</span><span class="t">'+L.tag+'</span>';
+      li.appendChild(b); list.appendChild(li);
+    });
+    var gl = d.createElementNS(ns,'path'); gl.setAttribute('class','ghost'); gl.setAttribute('pathLength','1'); var yG = top0 + (LEVELS.length-1)*(sh+gap) + sh+14;
+    gl.setAttribute('d','M10 '+(yG+4)+' H290'); gl.setAttribute('stroke-dasharray','2 3'); svg.appendChild(gl);
+    svg.setAttribute('viewBox','0 0 '+W+' '+(yG+16));
+  })();
+  function setLevel(i, user){
+    active = i;
+    $$('.slab, .led, .lvl-lab', svg).forEach(function(el){ el.classList.toggle('on', el.dataset.i==String(i)); });
+    $$('.lvl', list).forEach(function(el){ el.classList.toggle('on', el.dataset.i==String(i)); el.setAttribute('aria-pressed', el.dataset.i==String(i)); });
+    var L = LEVELS[i];
+    info.classList.remove('swap'); void info.offsetWidth; info.classList.add('swap');
+    info.innerHTML = '<h4>'+L.h+'<small>'+L.sub+'</small></h4><p>'+L.text+'</p>' + (L.rooms.length ? '<div class="rooms">'+L.rooms.map(function(r){ return '<span>· '+r+'</span>'; }).join('')+'</div>' : '');
+    if(user) clearInterval(timer);
+  }
+  setLevel(6);
+  svg.addEventListener('mouseover', function(e){ var t = e.target.closest('[data-i]'); if(t) setLevel(+t.dataset.i, true); });
+  svg.addEventListener('click', function(e){ var t = e.target.closest('[data-i]'); if(t) setLevel(+t.dataset.i, true); });
+  list.addEventListener('mouseover', function(e){ var t = e.target.closest('.lvl'); if(t) setLevel(+t.dataset.i, true); });
+  list.addEventListener('click', function(e){ var t = e.target.closest('.lvl'); if(t) setLevel(+t.dataset.i, true); });
+  list.addEventListener('focusin', function(e){ var t = e.target.closest('.lvl'); if(t) setLevel(+t.dataset.i, true); });
+  /* gentle sweep once the stack scrolls into view, until the reader takes over */
+  var sio = new IntersectionObserver(function(es){
+    if(!es[0].isIntersecting) return; sio.disconnect();
+    $('.stack-fig').classList.add('draw');
+    if(reduce) return;
+    setTimeout(function(){
+      var i = 7; timer = setInterval(function(){ i = (i - 1 + LEVELS.length) % LEVELS.length; setLevel(i); if(i===0){ clearInterval(timer); setTimeout(function(){ setLevel(6); }, 1400); } }, 700);
+    }, 1700);
+  }, {threshold:.25});
+  sio.observe($('#stack'));
+
+  /* ——— day / dusk compare ——— */
+  var cmp = $('#cmp'), range = $('input', cmp);
+  function setPos(v){ cmp.style.setProperty('--pos', v+'%'); }
+  range.addEventListener('input', function(){ cmp.classList.add('touched'); setPos(range.value); });
+  ['pointerdown','touchstart'].forEach(function(ev){ range.addEventListener(ev, function(){ cmp.classList.add('touched'); }, {passive:true}); });
+  var cio = new IntersectionObserver(function(es){
+    if(!es[0].isIntersecting) return; cio.disconnect();
+    if(reduce){ setPos(50); return; }
+    var s = null, from = 100, to = 50, dur = 1800;
+    function step(t){ if(s===null) s = t; var p = Math.min(1,(t-s)/dur), e = 1-Math.pow(1-p,3); var v = from+(to-from)*e; setPos(v); range.value = v; if(p<1 && !cmp.classList.contains('touched')) requestAnimationFrame(step); }
+    setPos(100); range.value = 100; requestAnimationFrame(step);
+  }, {threshold:.45});
+  cio.observe(cmp);
+
+  /* ——— plans: numbered markers, legend, tabs, zones ——— */
+  var ROOMS = {
+    typical: [
+      {g:'West residence', w:'west', r:[['Living room',27.0,59.4],['Kitchen',23.6,18.5],['Bedroom 1',10.0,74.4],['Dressing room and bath',12.7,61.0],['Bedroom 2',11.1,20.5],['Dressing room and bath',12.5,45.4],['Entrance lobby',16.3,52.4],['Guest WC',20.9,88.9],['Balcony, front',26.5,90.2],['Balcony, rear',13.5,6.5]]},
+      {g:'Centre residence', w:'centre', r:[['Living room',51.2,62.7],['Kitchen',39.7,21.6],['Bedroom 1',49.8,22.8],['Dressing room and bath',56.1,26.6],['Bedroom 2',66.0,23.3],['Dressing room and bath',61.4,30.0],['Entrance lobby',58.6,38.1],['Guest WC',56.1,88.0],['Balcony, front',48.2,90.2],['Balcony, rear',52.5,4.7]]},
+      {g:'East residence', w:'east', r:[['Living room',76.8,62.1],['Kitchen',76.3,22.8],['Bedroom 1',89.6,74.4],['Dressing room and bath',86.9,63.0],['Bedroom 2',88.7,22.8],['Dressing room and bath',87.1,46.3],['Entrance lobby',83.4,51.1],['Guest WC',78.7,90.2],['Balcony, front',70.3,92.9],['Balcony, rear',86.5,8.4]]},
+      {g:'Shared core', w:'', r:[['Lift, west core',38.1,69.8],['Main stair, west',35.2,63.7],['Lobby, west core',38.5,80.2],['Courtyard lightwell',38.6,53.9],['Courtyard lobby',32.8,42.6],['Back stair',31.4,16.1],['Lift, east core',60.7,88.2],['Main stair, east',61.7,53.4],['Lobby, east core',64.1,77.8]]}
+    ],
+    upper: [
+      {g:'West penthouse', w:'west', r:[['Living room',23.9,67.0],['Lounge',18.8,21.7],['Infinity pool',30.6,7.6],['Kitchen',11.0,41.2],['Bedroom suite',9.9,70.2],['Dressing room and bath',13.0,57.1],['Entrance lobby',30.4,75.9],['Guest WC',17.8,84.5],['Balcony, front',22.2,93.7],['Balcony, rear',15.4,3.9]]},
+      {g:'Centre residence', w:'centre', r:[['Living room',51.4,60.4],['Kitchen',40.4,21.7],['Bedroom 1',50.5,20.2],['Dressing room and bath',56.6,24.5],['Bedroom 2',67.9,20.4],['Dressing room and bath',61.7,26.0],['Entrance lobby',59.0,37.0],['Guest WC',56.8,84.8],['Balcony, front',49.3,89.5],['Balcony, rear',51.8,3.9]]},
+      {g:'East residence', w:'east', r:[['Living room',76.5,60.4],['Kitchen',76.7,24.7],['Bedroom 1',89.4,73.6],['Dressing room and bath',87.6,58.1],['Bedroom 2',89.1,24.7],['Dressing room and bath',87.6,43.3],['Entrance lobby',83.1,49.4],['Guest WC',78.5,86.0],['Balcony, front',72.7,91.0],['Balcony, rear',85.5,4.2]]},
+      {g:'Shared core', w:'', r:[['Lift, west core',39.1,69.4],['Main stair, west',35.6,62.1],['Lobby, west core',37.5,80.2],['Courtyard lightwell',39.1,52.4],['Courtyard lobby',35.8,41.2],['Back stair',31.9,16.8],['Lift, east core',61.2,85.2],['Main stair, east',61.7,49.9],['Lobby, east core',63.5,72.3]]}
+    ]
+  };
+  var PLANLAB = {typical:'<b>Typical floor</b> · north to the top · Parakou Street runs along the bottom edge', upper:'<b>Upper floors 05 – 06</b> · the west wing as a one-bedroom penthouse; the infinity pool at the top-left corner on the sixth floor'};
+  var plan = $('#plan'), labels = $('#labels'), legend = $('#legend'), planlab = $('#planlab'), floor = 'typical', planBuilt = false;
+  function zone(w, on){ $$('.zone', plan).forEach(function(z){ z.classList.toggle('on', on && z.dataset.w===w); }); $$('.key').forEach(function(k){ k.classList.toggle('on', on && k.dataset.w===w); }); }
+  function hi(i, on){
+    var grp = null;
+    $$('.mk', labels).forEach(function(m){ var me = m.dataset.i===String(i); m.classList.toggle('hi', on && me); m.classList.toggle('dim', on && !me); if(me) grp = m.dataset.w; });
+    $$('li', legend).forEach(function(li){ li.classList.toggle('hi', on && li.dataset.i===String(i)); });
+    if(grp) zone(grp, on);
+  }
+  function buildPlan(f){
+    labels.innerHTML = ''; legend.innerHTML = ''; var k = 0;
+    ROOMS[f].forEach(function(grp){
+      var box = d.createElement('div'); box.className = 'lg'; box.innerHTML = '<h4>'+grp.g+'</h4><ul></ul>'; var ul = box.querySelector('ul');
+      grp.r.forEach(function(r){
+        k++;
+        var m = d.createElement('span'); m.className = 'mk'; m.dataset.i = k; m.dataset.w = grp.w; m.style.left = r[1]+'%'; m.style.top = r[2]+'%'; m.style.setProperty('--i', k);
+        m.innerHTML = '<span>'+k+'</span><span class="tip">'+grp.g+'<small>'+r[0]+'</small></span>';
+        m.setAttribute('tabindex','0'); m.setAttribute('aria-label', k+', '+r[0]+', '+grp.g);
+        labels.appendChild(m);
+        var li = d.createElement('li'); li.dataset.i = k; li.innerHTML = '<span class="ln">'+k+'</span><span>'+r[0]+'</span>'; ul.appendChild(li);
+      });
+      legend.appendChild(box);
+    });
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ $$('.mk', labels).forEach(function(m){ m.classList.add('on'); }); }); });
+  }
+  function setFloor(f){
+    floor = f;
+    $$('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.floor===f ? 'true' : 'false'); });
+    $$('img', plan).forEach(function(im){ im.hidden = im.dataset.floor!==f; if(!im.hidden && im.naturalWidth) plan.style.aspectRatio = im.naturalWidth+'/'+im.naturalHeight; });
+    $$('.rcard[data-w="west"]').forEach(function(c){ c.hidden = c.dataset.floor!==f; if(!c.hidden) c.classList.add('in'); });
+    planlab.innerHTML = PLANLAB[f];
+    $$('.mk', labels).forEach(function(m){ m.classList.remove('on'); });
+    setTimeout(function(){ buildPlan(f); }, 260);
+  }
+  $$('.tab').forEach(function(tab){ tab.addEventListener('click', function(){ setFloor(tab.dataset.floor); }); });
+  $$('img', plan).forEach(function(im){ im.addEventListener('load', function(){ if(!im.hidden) plan.style.aspectRatio = im.naturalWidth+'/'+im.naturalHeight; }); if(im.complete && im.naturalWidth && !im.hidden) plan.style.aspectRatio = im.naturalWidth+'/'+im.naturalHeight; });
+  var onH = function(e){ var t = e.target.closest('[data-i]'); if(t) hi(t.dataset.i, true); }, offH = function(e){ var t = e.target.closest('[data-i]'); if(t) hi(t.dataset.i, false); };
+  [labels, legend].forEach(function(x){ x.addEventListener('mouseover', onH); x.addEventListener('mouseout', offH); x.addEventListener('focusin', onH); x.addEventListener('focusout', offH); });
+  $$('.seg button').forEach(function(b){ b.addEventListener('click', function(){ $$('.seg button').forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); }); plan.classList.toggle('plain', b.dataset.mode==='off'); }); });
+  $$('.rcard').forEach(function(c){ c.addEventListener('mouseenter', function(){ zone(c.dataset.w, true); }); c.addEventListener('mouseleave', function(){ zone(null, false); }); c.addEventListener('focusin', function(){ zone(c.dataset.w, true); }); });
+  $$('.key').forEach(function(k){ k.addEventListener('mouseenter', function(){ zone(k.dataset.w, true); }); k.addEventListener('mouseleave', function(){ zone(null,false); }); k.addEventListener('click', function(){ var on = !k.classList.contains('on'); zone(k.dataset.w, on); }); });
+  var plio = new IntersectionObserver(function(es){ if(es[0].isIntersecting && !planBuilt){ planBuilt = true; buildPlan(floor); plio.disconnect(); } }, {threshold:0.2});
+  plio.observe(plan);
+  $('#enlarge').addEventListener('click', function(){ openLB('plans', floor==='typical' ? 0 : 1); });
+
+  /* ——— gallery rail: drag, arrows, counter ——— */
+  var rail = $('#rail'), cards = $$('.fig', rail), idxEl = $('#railidx');
+  var isDown = false, startX = 0, startL = 0, moved = false;
+  rail.addEventListener('pointerdown', function(e){ if(e.pointerType==='touch') return; isDown = true; moved = false; startX = e.clientX; startL = rail.scrollLeft; rail.classList.add('drag'); });
+  rail.addEventListener('pointermove', function(e){ if(!isDown) return; var dx = e.clientX - startX; if(Math.abs(dx)>4) moved = true; rail.scrollLeft = startL - dx; });
+  function endDrag(){ if(!isDown) return; isDown = false; rail.classList.remove('drag'); }
+  rail.addEventListener('pointerup', endDrag); rail.addEventListener('pointerleave', endDrag); rail.addEventListener('pointercancel', endDrag);
+  rail.addEventListener('click', function(e){ if(moved){ e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+  function railIndex(){ var pad = parseFloat(getComputedStyle(rail).paddingLeft)||0; var best = 0, bd = 1e9; cards.forEach(function(c,i){ var dd = Math.abs(c.offsetLeft - pad - rail.scrollLeft); if(dd<bd){ bd = dd; best = i; } }); return best; }
+  rail.addEventListener('scroll', function(){ idxEl.textContent = String(railIndex()+1).padStart(2,'0'); }, {passive:true});
+  function railGo(i){ i = Math.max(0, Math.min(cards.length-1, i)); var pad = parseFloat(getComputedStyle(rail).paddingLeft)||0; rail.scrollTo({left: cards[i].offsetLeft - pad, behavior: reduce?'auto':'smooth'}); }
+  $('#railprev').addEventListener('click', function(){ railGo(railIndex()-1); });
+  $('#railnext').addEventListener('click', function(){ railGo(railIndex()+1); });
+
+  /* ——— lightbox: views and a pan-and-zoom board for the plans ——— */
+  var LB = {
+    views: [
+      {src:'assets/front-overcast.jpg', t:'Front elevation', s:'Overcast · from Parakou Street'},
+      {src:'assets/front-clear.jpg', t:'Front elevation', s:'Clear sky'},
+      {src:'assets/corner-dusk.jpg', t:'Corner at dusk', s:'LED strips along every slab edge'},
+      {src:'assets/entrance-dusk.jpg', t:'Arrival at dusk', s:'Parking beneath the residences'},
+      {src:'assets/entrance-day.jpg', t:'Arrival at noon', s:'The same view by day'},
+      {src:'assets/balconies-aerial.jpg', t:'Balconies from above', s:'Planters, glass balustrades, curved slabs'},
+      {src:'assets/street-day.jpg', t:'Street approach', s:'Along the boundary wall by day'}
+    ],
+    plans: [
+      {plan:true, src:'assets/plan-typical.png', t:'Typical floor plan', s:'Floors 01 – 04 · drag to pan, scroll or pinch to zoom'},
+      {plan:true, src:'assets/plan-upper.png', t:'Upper floor plan', s:'Floors 05 – 06 · drag to pan, scroll or pinch to zoom'}
+    ]
+  };
+  var lb = $('#lb'), lbimg = $('#lbimg'), lbfig = $('#lbfig'), lbcap = $('#lbcap'), lbcnt = $('#lbcnt'), cur = 0, lbset = 'views', lastFocus;
+  var stage = $('#stage'), zimg = $('#zimg'), zoomctl = $('#zoomctl'), zlab = $('#zlab');
+  function asset(p){ return (window.__assets && window.__assets[p]) || p; }
+  var Z = {s:1, fit:1, x:0, y:0, w:0, h:0,
+    apply:function(){ zimg.style.transform = 'translate('+Z.x+'px,'+Z.y+'px) scale('+Z.s+')'; zlab.textContent = Math.round(Z.s/Z.fit*100)+'%'; },
+    fitTo:function(){ var W = stage.clientWidth, H = stage.clientHeight; if(!Z.w||!W) return; Z.fit = Math.min(W/Z.w, H/Z.h)*0.94; Z.s = Z.fit; Z.x = (W-Z.w*Z.s)/2; Z.y = (H-Z.h*Z.s)/2; Z.apply(); },
+    zoomAt:function(f, cx, cy){ var ns = Math.max(Z.fit*0.6, Math.min(Z.fit*10, Z.s*f)), k = ns/Z.s; Z.x = cx-(cx-Z.x)*k; Z.y = cy-(cy-Z.y)*k; Z.s = ns; Z.apply(); }
+  };
+  function show(i){
+    var set = LB[lbset]; cur = (i+set.length)%set.length; var it = set[cur];
+    lbcap.innerHTML = '<b>'+it.t+'</b>'+it.s; lbcnt.textContent = String(cur+1).padStart(2,'0')+' / '+String(set.length).padStart(2,'0');
+    zoomctl.hidden = !it.plan; stage.hidden = !it.plan; lbfig.hidden = !!it.plan;
+    if(it.plan){
+      lbimg.removeAttribute('src'); zimg.style.transform = ''; Z.w = 0;
+      var im = new Image(); im.onload = function(){ zimg.src = im.src; zimg.alt = it.t; zimg.style.width = im.naturalWidth+'px'; zimg.style.height = im.naturalHeight+'px'; Z.w = im.naturalWidth; Z.h = im.naturalHeight; Z.fitTo(); }; im.src = asset(it.src);
+    } else { zimg.removeAttribute('src'); lbimg.src = asset(it.src); lbimg.alt = it.t+' — '+it.s; }
+  }
+  function openLB(set, i){ lbset = LB[set] ? set : 'views'; lastFocus = d.activeElement; show(i); lb.hidden = false; requestAnimationFrame(function(){ lb.classList.add('open'); }); d.body.style.overflow = 'hidden'; $('#lbclose').focus(); }
+  function closeLB(){ lb.classList.remove('open'); d.body.style.overflow = ''; setTimeout(function(){ lb.hidden = true; }, 400); if(lastFocus) lastFocus.focus(); }
+  $$('.fig[data-lb]').forEach(function(f){ f.setAttribute('tabindex','0'); f.setAttribute('role','button'); f.setAttribute('aria-label','Open '+($('b',f)?$('b',f).textContent:'view')+' full screen');
+    f.addEventListener('click', function(){ if(moved) return; openLB('views', +f.dataset.lb); });
+    f.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLB('views', +f.dataset.lb); } }); });
+  $('#lbclose').addEventListener('click', closeLB);
+  $('#lbprev').addEventListener('click', function(){ show(cur-1); });
+  $('#lbnext').addEventListener('click', function(){ show(cur+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb || e.target===lbfig) closeLB(); });
+  /* zoom board interaction */
+  $('#zin').addEventListener('click', function(){ Z.zoomAt(1.5, stage.clientWidth/2, stage.clientHeight/2); });
+  $('#zout').addEventListener('click', function(){ Z.zoomAt(1/1.5, stage.clientWidth/2, stage.clientHeight/2); });
+  $('#zreset').addEventListener('click', function(){ Z.fitTo(); });
+  stage.addEventListener('wheel', function(e){ e.preventDefault(); var r = stage.getBoundingClientRect(); Z.zoomAt(Math.exp(-e.deltaY*0.0016), e.clientX-r.left, e.clientY-r.top); }, {passive:false});
+  stage.addEventListener('dblclick', function(e){ var r = stage.getBoundingClientRect(); Z.zoomAt(1.8, e.clientX-r.left, e.clientY-r.top); });
+  var pts = {}, pdist = 0, pmid = null, panning = false, px0 = 0, py0 = 0, zx0 = 0, zy0 = 0;
+  stage.addEventListener('pointerdown', function(e){ stage.setPointerCapture(e.pointerId); pts[e.pointerId] = [e.clientX, e.clientY]; var ks = Object.keys(pts);
+    if(ks.length===1){ panning = true; px0 = e.clientX; py0 = e.clientY; zx0 = Z.x; zy0 = Z.y; stage.classList.add('drag'); }
+    else if(ks.length===2){ var a = pts[ks[0]], b = pts[ks[1]]; pdist = Math.hypot(a[0]-b[0], a[1]-b[1]); pmid = [(a[0]+b[0])/2, (a[1]+b[1])/2]; panning = false; } });
+  stage.addEventListener('pointermove', function(e){ if(!(e.pointerId in pts)) return; pts[e.pointerId] = [e.clientX, e.clientY]; var ks = Object.keys(pts);
+    if(ks.length===2){ var a = pts[ks[0]], b = pts[ks[1]], dist = Math.hypot(a[0]-b[0], a[1]-b[1]), mid = [(a[0]+b[0])/2, (a[1]+b[1])/2], r = stage.getBoundingClientRect(); if(pdist){ Z.zoomAt(dist/pdist, mid[0]-r.left, mid[1]-r.top); } Z.x += mid[0]-pmid[0]; Z.y += mid[1]-pmid[1]; Z.apply(); pdist = dist; pmid = mid; }
+    else if(panning){ Z.x = zx0 + (e.clientX-px0); Z.y = zy0 + (e.clientY-py0); Z.apply(); } });
+  function pend(e){ delete pts[e.pointerId]; if(!Object.keys(pts).length){ panning = false; stage.classList.remove('drag'); } pdist = 0; }
+  stage.addEventListener('pointerup', pend); stage.addEventListener('pointercancel', pend);
+  window.addEventListener('resize', function(){ if(!lb.hidden && !stage.hidden) Z.fitTo(); });
+
+  /* ——— index overlay ——— */
+  var menu = $('#menu'), menubtn = $('#menubtn');
+  function openMenu(){ lastFocus = d.activeElement; menu.hidden = false; requestAnimationFrame(function(){ menu.classList.add('open'); }); d.body.style.overflow = 'hidden'; $('#menuclose').focus(); menubtn.setAttribute('aria-expanded','true'); }
+  function closeMenu(){ menu.classList.remove('open'); d.body.style.overflow = ''; setTimeout(function(){ menu.hidden = true; }, 450); menubtn.setAttribute('aria-expanded','false'); if(lastFocus) lastFocus.focus(); }
+  menubtn.addEventListener('click', openMenu);
+  $('#menuclose').addEventListener('click', closeMenu);
+  $$('a', menu).forEach(function(a){ a.addEventListener('click', function(){ closeMenu(); }); });
+
+  d.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){ if(!lb.hidden) closeLB(); if(!menu.hidden) closeMenu(); }
+    if(!lb.hidden){ if(e.key==='ArrowRight') show(cur+1); if(e.key==='ArrowLeft') show(cur-1); }
+  });
+
+  /* ——— the site plan, drawn in metres from sheet A101 ——— */
+  (function buildSite(){
+    var svg = $('#sitesvg'), sp = $('#siteplan'); if(!svg) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs, parent){ var e = d.createElementNS(ns, tag); for(var k in attrs) e.setAttribute(k, attrs[k]); (parent||svg).appendChild(e); return e; }
+    function txt(x, y, str, cls, parent, extra){ var t = el('text', {x:x, y:y, 'class':cls}, parent); if(extra){ for(var k in extra) t.setAttribute(k, extra[k]); } t.textContent = str; return t; }
+    var i;
+    /* street: verge with trees, then the carriageway */
+    el('rect', {'class':'sp-verge', x:-3, y:28, width:48, height:2.2});
+    el('rect', {'class':'sp-road', x:-3, y:30.2, width:48, height:6.8});
+    txt(20.8, 34.2, 'Parakou Street', 'sp-txt big', null, {'text-anchor':'middle', style:'font-size:2px;letter-spacing:.3em;text-transform:uppercase;font-family:var(--font-body);font-weight:500;fill:var(--muted)'});
+    el('path', {'class':'sp-aisle', d:'M-3,33.6 H45', style:'stroke-dasharray:1.2 .8'});
+    /* the plot: a trapezoid, with the vehicle entrance left open in the front wall */
+    el('path', {'class':'sp-bound', d:'M12.1,28 H0 V0 H41.5 V27.95 H19.2', pathLength:'1', style:'--d:0'});
+    el('path', {'class':'sp-bound', d:'M0,0 H41.5', style:'stroke-width:.02', fill:'none'});
+    var G = {};
+    ['green','bays','under','gate','court','cores','bld'].forEach(function(k){ G[k] = el('g', {'class':'sp-g', 'data-g':k}); });
+    /* hedges inside the front wall */
+    el('rect', {'class':'sp-hedge', x:5.4, y:26.9, width:6.4, height:.9}, G.green);
+    el('rect', {'class':'sp-hedge', x:19.6, y:26.9, width:21.4, height:.9}, G.green);
+    el('rect', {'class':'sp-hedge', x:.4, y:.4, width:.9, height:24}, G.green);
+    el('rect', {'class':'sp-hedge', x:40.2, y:.4, width:.9, height:26.8}, G.green);
+    /* the drive from the gate into the undercroft, and the parking aisle beneath the building */
+    el('path', {'class':'sp-drive', d:'M15.6,31 V22.6', pathLength:'1', style:'--d:.5'}, G.under);
+    el('path', {'class':'sp-aisle', d:'M4.6,17.6 H37.2'}, G.under);
+    /* perimeter bays: west 6, east 7, north 2 */
+    for(i=0;i<6;i++){ el('rect', {'class':'sp-bay', x:.5, y:1.8+i*2.55, width:2.4, height:2.3}, G.bays); }
+    for(i=0;i<7;i++){ el('rect', {'class':'sp-bay', x:38.7, y:2.4+i*2.55, width:2.4, height:2.3}, G.bays); }
+    el('rect', {'class':'sp-bay', x:13.8, y:1.4, width:2.3, height:4.8}, G.bays); el('rect', {'class':'sp-bay', x:24.6, y:1.4, width:2.3, height:4.8}, G.bays);
+    txt(1.7, 17.8, '6', 'sp-txt dim', G.bays, {'text-anchor':'middle'}); txt(39.9, 21.2, '7', 'sp-txt dim', G.bays, {'text-anchor':'middle'}); txt(19.4, 4.3, '2 bays', 'sp-txt dim', G.bays, {'text-anchor':'middle'});
+    el('path', {'class':'sp-hl', d:'M.2,1.5 H3.2 V17.4 H.2 Z M38.4,2.1 H41.4 V20.4 H38.4 Z M13.5,1.1 H16.4 V6.5 H13.5 Z M24.3,1.1 H27.2 V6.5 H24.3 Z'}, G.bays);
+    /* bays beneath the building */
+    [[5.4,8.2],[8.4,8.2],[11.4,8.2],[27.6,15.2],[30.6,15.2],[33.6,15.2]].forEach(function(c){ el('rect', {'class':'sp-bay u', x:c[0], y:c[1], width:2.5, height:5}, G.under); });
+    el('path', {'class':'sp-hl', d:'M5.1,7.9 H14.2 V13.5 H5.1 Z M27.3,14.9 H36.4 V20.5 H27.3 Z M14.4,31.2 V22.4 H16.8 V31.2 Z'}, G.under);
+    /* the building: 35.25 by 14.58 m with rounded balcony corners; the roof outline dashed */
+    var bld = 'M5,7 H36.7 a1.8,1.8 0 0 1 1.8,1.8 V19.8 a1.8,1.8 0 0 1 -1.8,1.8 H5 a1.8,1.8 0 0 1 -1.8,-1.8 V8.8 a1.8,1.8 0 0 1 1.8,-1.8 Z';
+    el('path', {'class':'sp-bld', d:bld, pathLength:'1', style:'--d:.3'}, G.bld);
+    el('path', {'class':'sp-led', d:bld}, G.bld);
+    /* lit windows at dusk */
+    for(i=0;i<9;i++){ el('rect', {'class':'sp-win', x:5.2+i*3.8, y:7.35, width:2.2, height:.35}, G.bld); el('rect', {'class':'sp-win', x:5.2+i*3.8, y:20.9, width:2.2, height:.35}, G.bld); }
+    txt(20.85, 11.5, 'Heights 777', 'sp-txt big', G.bld, {'text-anchor':'middle'});
+    txt(20.85, 13.1, 'Seven storeys · parking beneath', 'sp-txt dim', G.bld, {'text-anchor':'middle'});
+    el('path', {'class':'sp-hl', d:'M2.6,6.4 H39.1 V22.2 H2.6 Z'}, G.bld);
+    /* the two cores and the courtyard */
+    el('rect', {'class':'sp-core', x:14.6, y:15.6, width:3, height:3.9, pathLength:'1', style:'--d:1'}, G.cores);
+    el('rect', {'class':'sp-core', x:23.4, y:16.6, width:3, height:3.6, pathLength:'1', style:'--d:1.1'}, G.cores);
+    txt(16.1, 17.9, 'Lift', 'sp-txt dim', G.cores, {'text-anchor':'middle'}); txt(24.9, 18.7, 'Lift', 'sp-txt dim', G.cores, {'text-anchor':'middle'});
+    el('path', {'class':'sp-hl', d:'M14.2,15.2 H18 V19.9 H14.2 Z M23,16.2 H26.8 V20.6 H23 Z'}, G.cores);
+    el('rect', {'class':'sp-court', x:15.7, y:13.8, width:2.2, height:1.7}, G.court);
+    txt(15.3, 15.1, 'Court', 'sp-txt dim', G.court, {'text-anchor':'end'});
+    el('path', {'class':'sp-hl', d:'M15.3,13.4 H18.3 V15.9 H15.3 Z'}, G.court);
+    /* gate house and the entrance */
+    el('rect', {'class':'sp-gh', x:.3, y:25.1, width:4.7, height:2.8, pathLength:'1', style:'--d:.9'}, G.gate);
+    txt(2.65, 24.5, 'Gate house', 'sp-txt dim', G.gate, {'text-anchor':'middle'});
+    el('path', {'class':'sp-gate', d:'M15.6,27.2 l.9,.8 -.9,.8 -.9,-.8 Z'}, G.gate);
+    txt(15.6, 29.5, 'Entrance', 'sp-txt', G.gate, {'text-anchor':'middle', style:'fill:var(--accent)'});
+    el('path', {'class':'sp-hl', d:'M0,24.7 H5.3 V28.3 H0 Z M11.8,26.6 H19.5 V30 H11.8 Z'}, G.gate);
+    /* street trees along the verge */
+    [1.3,3.7,6.1,22,25.6,29.2,32.8,36.4].forEach(function(x, k){ el('circle', {'class':'sp-tree', cx:x, cy:29.1, r:.95, style:'--i:'+k}, G.green); });
+    el('path', {'class':'sp-hl', d:'M-.2,27.6 H43 V30.3 H-.2 Z'}, G.green);
+    /* the arrival route: gate, drive, undercroft, west lift lobby */
+    el('path', {'class':'sp-route', d:'M15.6,32.5 V22.6 L15.6,19.9 H16.1', pathLength:'1'});
+    el('circle', {'class':'sp-route-dot', cx:16.1, cy:19.9, r:.45});
+    /* scale bar: exactly five metres, top-right */
+    el('path', {d:'M33.5,-1.4 H38.5 M33.5,-1.9 V-.9 M38.5,-1.9 V-.9', fill:'none', stroke:'var(--fg)', 'stroke-width':.09});
+    txt(36, -2.3, '5 m', 'sp-txt', null, {'text-anchor':'middle'});
+    txt(0.3, -1.05, 'North up', 'sp-txt dim', null, {'text-anchor':'start'});
+    /* north arrow, top-left */
+    var n = el('g', {transform:'translate(-1.2,-1.4)'}); el('circle', {cx:0, cy:0, r:1, fill:'none', stroke:'var(--line-2)', 'stroke-width':.08}, n); el('path', {d:'M0,-.75 L.35,.5 L0,.25 L-.35,.5 Z', fill:'var(--fg)'}, n);
+    /* hotspots on top of everything, one per group */
+    var HOT = {bld:[2.6,6.4,36.5,15.8], under:[14.4,22.4,2.4,8.8], bays:[.2,1.5,3,16], gate:[0,24.7,5.3,3.6], cores:[14.2,15.2,12.6,5.4], court:[15.3,13.4,3,2.5], green:[-.2,27.6,43.2,2.7]};
+    var hot = el('g', {});
+    Object.keys(HOT).forEach(function(k){ var r = HOT[k]; el('rect', {'class':'sp-hot', 'data-g':k, x:r[0], y:r[1], width:r[2], height:r[3]}, hot); });
+    el('rect', {'class':'sp-hot', 'data-g':'bays', x:38.4, y:2.1, width:3, height:18.3}, hot);
+    el('rect', {'class':'sp-hot', 'data-g':'under', x:5.1, y:7.9, width:9.1, height:5.6}, hot); el('rect', {'class':'sp-hot', 'data-g':'under', x:27.3, y:14.9, width:9.1, height:5.6}, hot);
+    function setG(g, on){ $$('.sp-g', svg).forEach(function(x){ x.classList.toggle('on', on && x.dataset.g===g); }); $$('.skey').forEach(function(k){ k.classList.toggle('on', on && k.dataset.g===g); }); }
+    var onG = function(e){ var t = e.target.closest('[data-g]'); if(t) setG(t.dataset.g, true); }, offG = function(e){ var t = e.target.closest('[data-g]'); if(t) setG(t.dataset.g, false); };
+    [hot, $('#skeys')].forEach(function(x){ x.addEventListener('mouseover', onG); x.addEventListener('mouseout', offG); x.addEventListener('focusin', onG); x.addEventListener('focusout', offG); });
+    $('#skeys').addEventListener('click', function(e){ var t = e.target.closest('.skey'); if(t) setG(t.dataset.g, !t.classList.contains('on')); });
+    var rb = $('#routebtn'); rb.addEventListener('click', function(){ var on = !sp.classList.contains('route'); sp.classList.toggle('route', on); rb.setAttribute('aria-pressed', on); });
+    var db = $('#duskbtn'); db.addEventListener('click', function(){ var on = !sp.classList.contains('dusk'); sp.classList.toggle('dusk', on); db.setAttribute('aria-pressed', on); });
+  })();
+})();
+</script>
+</body>
+</html>
