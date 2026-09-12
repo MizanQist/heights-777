@@ -4,6 +4,10 @@ Web brochure for Heights 777 — eighteen one- and two-bedroom residences on sev
 
 Seven pages, one file: `index.html` carries the markup, styles and interactions; `assets/` holds the visualisations and the line-art plans and section exported from the architectural drawings (October 2025). Fonts load from Google Fonts (Bodoni Moda, Jost).
 
+## Location map
+
+The location page carries an interactive map built on [Leaflet](https://leafletjs.com) 1.9.4, vendored in `assets/leaflet/`, which loads only when the page scrolls near. Street tiles come from OpenStreetMap (desaturated and warmed with a CSS filter to sit with the palette) and the aerial view from Esri World Imagery; both need the network and both must keep their attribution. `assets/map-data.js` holds the indicative plot outline, the landmarks, the highlighted streets (OpenStreetMap geometry, where Parakou Street is mapped as Parakou Crescent) and the driving routes from the gate, routed with OSRM at build time by `tools/map/build_data.py` from the extracts beside it. Edit the `LANDMARKS` list there and re-run it (it needs the network) to change the places shown; group names and drive times are in the `GROUPS` object inside the map script in `index.html`.
+
 ## Hosting
 
 The site is static. On GitHub Pages, serve the `main` branch from `/` — `.nojekyll` is included so nothing is processed. `robots.txt` and the page's robots meta keep the brochure out of search results; remove both when the development goes public.
